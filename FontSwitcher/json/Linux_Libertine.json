@@ -1,0 +1,12 @@
+{
+    "free_font?": {
+        "name": "Linux Libertine",
+        "font_default": "submods/FontSwitcher/font/linux.ttf",
+        "font_label": "submods/FontSwitcher/font/linux.ttf",
+        "font_button": "submods/FontSwitcher/font/linux.ttf",
+        "size_default": 20,
+        "size_button": 20,
+        "padding": 5,
+        "description": "Will there be a linux fan?"
+    }
+}

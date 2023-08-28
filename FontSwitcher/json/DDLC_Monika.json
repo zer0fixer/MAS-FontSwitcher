@@ -1,0 +1,13 @@
+{
+    "justmonika": {
+        "name": "Monika's handwriting",
+        "font_default": "mod_assets/font/m1_fixed.ttf",
+        "font_label": "mod_assets/font/m1_fixed.ttf",
+        "font_button": "mod_assets/font/m1_fixed.ttf",
+        "size_default": 27,
+        "size_button": 27,
+        "padding": 3,
+        "description": "I'm glad to see you here~"
+    }
+  }
+  
