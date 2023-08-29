@@ -18,19 +18,20 @@ It is a submod that adds a simple way to add new fonts to Monika After Story so 
 ## Fonts
 To add and share more fonts, you can use JSON files.
 For more convenience, there will be a JSON template so you can edit it.
+Click ![Here!](blob:https://github.com/d953df58-1f3a-442c-9398-776810f80608)
 
-Example:
-```json
-{       //⇣ This is the font ID, it has to be unique.//
+#### Example:
+```yaml
+{    # ↓ This is the font ID, it has to be unique
     "justmonika": {
-        "name": "Monika's handwriting",  //Font name//
-        "font_default": "mod_assets/font/m1_fixed.ttf",
-        "font_label": "mod_assets/font/m1_fixed.ttf",
-        "font_button": "mod_assets/font/m1_fixed.ttf",
-        "size_default": 27,
-        "size_button": 27,
-        "padding": 3,
-        "description": "How's your day going, player?"
+        "name": "Monika's handwriting",  # ← Font name, it is recommended to keep it short to avoid screen saturation.
+        "font_default": "mod_assets/font/m1_fixed.ttf",  # ← Location of the main font (Game Text, Dialogue).
+        "font_label": "mod_assets/font/m1_fixed.ttf",  # ← Location of the label font (General Titles).
+        "font_button": "mod_assets/font/m1_fixed.ttf",  # ← Location of the button font (Options).
+        "size_default": 27,  # ←
+        "size_button": 27,  # ←
+        "padding": 3, # ←
+        "description": "How's your day going, player?"  # ←
     }
 }
 ```
