@@ -88,6 +88,7 @@ label _fs_preview:
         mas_MUMURaiseShield()
         font_settings = JS_font_switcher[FS_temp_font_]
 
+        temp_padding = font_settings["padding"]
         size_default = font_settings["size_default"]
         size_button = font_settings["size_button"]
         path_default = font_settings["font_default"]
@@ -126,6 +127,7 @@ screen fake_overlay():
 
         for button_text in ["Talk", "Extra", "Music", "Play"]:
             textbutton "{size=[size_button]}{font=[path_button]}[button_text]{/font}{/size}":
+                padding(temp_padding, temp_padding)
                 action NullAction()
 
     vbox:
@@ -142,4 +144,5 @@ screen fake_overlay():
 
         for _menu in items:
             textbutton "{size=[size_button]}{font=[path_button]}[_menu]{/font}{/size}":
+                padding(temp_padding, temp_padding)
                 action NullAction()

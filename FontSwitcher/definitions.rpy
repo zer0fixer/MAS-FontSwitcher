@@ -45,7 +45,7 @@ define 5 font_switcher_padding = FS_get_key["padding"]
 define 5 font_switcher_default_text_size = FS_get_key["size_default"]
 # define 5 font_switcher_label_text_size = FS_get_key["size_label"]
 define 5 font_switcher_button_text_size = FS_get_key["size_button"]
-define font_switcher_quick_size = FS_get_key["quick_size"]
+define 5 font_switcher_quick_size = FS_get_key["quick_size"]
 
 
 # define font_switcher_label_text_size = 35
