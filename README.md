@@ -15,6 +15,8 @@ It is a submod that adds a simple way to add new fonts to Monika After Story so 
 | ------- | ------- |
 | ![Holi](https://github.com/zer0fixer/MAS-FontSwitcher/assets/94260040/4602cc56-a6d4-4fec-96d3-f7be56c05508) | ![lmao](https://github.com/zer0fixer/MAS-FontSwitcher/assets/94260040/f1bafe56-62ff-4470-a5ca-ca52b6b1eb52) |
 
+## Installation
+1-
 ## Fonts
 To add and share more fonts, you can use JSON files.
 For more convenience, there will be a JSON template so you can edit it.
@@ -25,9 +27,9 @@ Click ![Here!](blob:https://github.com/d953df58-1f3a-442c-9398-776810f80608)
 {    # ↓ This is the font ID, it has to be unique
     "justmonika": {
         "name": "Monika's handwriting",  # ← Font name, it is recommended to keep it short to avoid screen saturation.
-        "font_default": "mod_assets/font/m1_fixed.ttf",  # ← Location of the main font (Game Text, Dialogue).
-        "font_label": "mod_assets/font/m1_fixed.ttf",  # ← Location of the label font (General Titles).
-        "font_button": "mod_assets/font/m1_fixed.ttf",  # ← Location of the button font (Options).
+        "font_default": "mod_assets/font/m1_fixed.ttf",  # ← Path of the main font (Game Text, Dialogue).
+        "font_label": "mod_assets/font/m1_fixed.ttf",  # ← Path of the label font (General Titles).
+        "font_button": "mod_assets/font/m1_fixed.ttf",  # ← Path of the button font (Options).
         "size_default": 27,  # ←
         "size_button": 27,  # ←
         "padding": 3, # ←
