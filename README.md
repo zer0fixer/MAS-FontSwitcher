@@ -37,3 +37,4 @@ Click ![Here!](https://github.com/zer0fixer/resource-repository/blob/main/Templa
     }
 }
 ```
+**Note: It is possible to place and define the path to a font outside the folder of this submod, but it is not recommended unless it is a Monika After Story font. It is recommended to be inside the font folder in "submods/FontSwitcher/font" and the JSON is mandatory to be in "submods/FontSwitcher/json".**
