@@ -6,6 +6,7 @@
         "font_button": "submods/FontSwitcher/font/caveat.ttf",
         "size_default": 24,
         "size_button": 24,
+        "quick_size": 14,
         "padding": 0,
         "description": "It is a type of font in the style of handwriting."
     }

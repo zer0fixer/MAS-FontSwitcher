@@ -6,6 +6,7 @@
         "font_button": "submods/FontSwitcher/font/comfortaa.ttf",
         "size_default": 20,
         "size_button": 20,
+        "quick_size": 14,
         "padding": 5,
         "description": "Is a rounded geometric sans-serif type design intended for large sizes."
     }

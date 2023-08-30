@@ -6,6 +6,7 @@
         "font_button": "submods/FontSwitcher/font/minecraft.otf",
         "size_default": 20,
         "size_button": 20,
+        "quick_size": 14,
         "padding": 4,
         "description": "A pixelated font reminiscent of the iconic text from Minecraft."
     }

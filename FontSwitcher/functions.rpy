@@ -38,6 +38,7 @@ init -1 python:
                     "font_button": "mod_assets/font/m1_fixed.ttf",
                     "size_default": 27,
                     "size_button": 27,
+                    "quick_size": 14,
                     "padding": 3,
                     "description": "I'm glad to see you here, [player]~"
                 }
