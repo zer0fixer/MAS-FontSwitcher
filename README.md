@@ -15,12 +15,10 @@ It is a submod that adds a simple way to add new fonts to Monika After Story so 
 | ------- | ------- |
 | ![Holi](https://github.com/zer0fixer/MAS-FontSwitcher/assets/94260040/4602cc56-a6d4-4fec-96d3-f7be56c05508) | ![lmao](https://github.com/zer0fixer/MAS-FontSwitcher/assets/94260040/f1bafe56-62ff-4470-a5ca-ca52b6b1eb52) |
 
-## Installation
-1-
 ## Fonts
 To add and share more fonts, you can use JSON files.
 For more convenience, there will be a JSON template so you can edit it.
-Click ![Here!](https://drive.usercontent.google.com/download?id=1PEs1VUzpxHsZkWKFwYm9oMDuBypKSiAQ&export=download&authuser=0&confirm=t&uuid=8a32b8fc-f824-4f3a-a56e-c084e54f48d7&at=APZUnTUzSIDyk2kkiEQA-vYJHkLc:1693364882667)
+Click ![Here!](https://github.com/zer0fixer/resource-repository/blob/main/Template.json)
 
 #### Example:
 ```yaml
@@ -37,4 +35,3 @@ Click ![Here!](https://drive.usercontent.google.com/download?id=1PEs1VUzpxHsZkWK
     }
 }
 ```
-
