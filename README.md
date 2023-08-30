@@ -1,5 +1,6 @@
+# Submod under construction, should not be used.
 <p align="center">
-  <img src="https://github.com/Zero-Fixer/MAS-FontSwitcher-EN/assets/142945683/6caa8b59-7e67-4def-a440-7f086255da72">
+  <img src="https://github.com/zer0fixer/MAS-FontSwitcher/assets/94260040/ecafaae0-acfc-4105-a5a0-2d5c5864e2c5">
 </p>
 
 <p align="center">
