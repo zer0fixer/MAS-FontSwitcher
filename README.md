@@ -1,4 +1,4 @@
-# Submod under construction, should not be used.
+# ⚠ Submod under construction, should not be used.
 <p align="center">
   <img src="https://github.com/zer0fixer/MAS-FontSwitcher/assets/94260040/ecafaae0-acfc-4105-a5a0-2d5c5864e2c5">
 </p>
