@@ -7,7 +7,6 @@
         "size_default": 25,
         "size_button": 25,
         "quick_size": 18,
-        "padding": 3,
-        "description": "Another handwrite type font."
+        "padding": 3
     }
 }

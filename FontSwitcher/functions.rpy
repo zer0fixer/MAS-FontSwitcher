@@ -1,7 +1,7 @@
 init -1 python:
     # Apply the selected font style and trigger a game restart.
     def FS_apply_style():
-        FS_get_data = JS_font_switcher[FS_temp_font_]
+        FS_get_data = FS_font_switcher[FS_temp_font_]
         persistent._font_settings_ = {
             "id": FS_temp_font_,
             "name": FS_get_data["name"],
@@ -40,8 +40,7 @@ init -1 python:
                     "size_default": 27,
                     "size_button": 27,
                     "quick_size": 14,
-                    "padding": 3,
-                    "description": "I'm glad to see you here, [player]~"
+                    "padding": 3
                 }
             }
 

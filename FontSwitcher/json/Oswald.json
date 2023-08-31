@@ -7,7 +7,6 @@
         "size_default": 22,
         "size_button": 22,
         "quick_size": 14,
-        "padding": 0,
-        "description": "Is a reworking of the classic gothic typeface style historically represented by designs such as 'Alternate Gothic'"
+        "padding": 0
     }
 }

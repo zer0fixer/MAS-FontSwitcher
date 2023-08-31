@@ -7,7 +7,6 @@
         "size_default": 21,
         "size_button": 21,
         "quick_size": 14,
-        "padding": 2,
-        "description": "Is a handwriting font family."
+        "padding": 2
     }
 }

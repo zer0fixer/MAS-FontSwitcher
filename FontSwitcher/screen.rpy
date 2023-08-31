@@ -31,7 +31,6 @@ screen _font_switcher_submod():
                     # Button to select a font.
                     textbutton _(font_name):
                         action SetField(store, "FS_temp_font_", key)
-                        hovered tooltip.Action(FS_font_switcher[key]["description"])
                         selected FS_temp_font_ == key
                         
             null height 10
@@ -86,6 +85,7 @@ label _fs_preview:
     python:
         disable_esc()
         mas_MUMURaiseShield()
+        font_settings = FS_font_switcher[FS_temp_font_]
         temp_padding = font_settings["padding"]
         size_default = font_settings["size_default"]
         size_button = font_settings["size_button"]

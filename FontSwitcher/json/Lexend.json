@@ -7,7 +7,6 @@
         "size_default": 20,
         "size_button": 20,
         "quick_size": 14,
-        "padding": 4,
-        "description": "Font type to reduce visual stress and improve reading performance."
+        "padding": 4
     }
 }

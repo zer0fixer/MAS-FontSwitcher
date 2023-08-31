@@ -32,8 +32,7 @@ Click ![Here!](https://github.com/zer0fixer/resource-repository/blob/main/Templa
         "size_default": 27,  # ← Applies the size of the main font.
         "size_button": 27,  # ← Applies the font size of the buttons.
         "quick_size": 14,  # ← The size of the quick menu (History, Skip, Auto, Save, Load, Settings).
-        "padding": 3, # ← This is used to adjust the position and size of the button content. Therefore you will use it in some fonts where it is necessary to modify the padding.
-        "description": "How's your day going, player?"  # ← You can add a small description about the font or something else but in moderation.
+        "padding": 3 # ← This is used to adjust the position and size of the button content. Therefore you will use it in some fonts where it is necessary to modify the padding.
     }
 }
 ```
