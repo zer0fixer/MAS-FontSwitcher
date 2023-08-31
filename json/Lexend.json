@@ -1,0 +1,13 @@
+{
+    "lex_font": {
+        "name": "Lexend",
+        "font_default": "submods/FontSwitcher/font/Lexend.ttf",
+        "font_label": "submods/FontSwitcher/font/Lexend.ttf",
+        "font_button": "submods/FontSwitcher/font/Lexend.ttf",
+        "size_default": 20,
+        "size_button": 20,
+        "quick_size": 14,
+        "padding": 4,
+        "description": "Font type to reduce visual stress and improve reading performance."
+    }
+}

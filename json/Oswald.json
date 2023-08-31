@@ -1,0 +1,13 @@
+{
+    "oswald_rabbit?": {
+        "name": "Oswald",
+        "font_default": "submods/FontSwitcher/font/Oswald-Light.ttf",
+        "font_label": "submods/FontSwitcher/font/Oswald-Light.ttf",
+        "font_button": "submods/FontSwitcher/font/Oswald-Light.ttf",
+        "size_default": 22,
+        "size_button": 22,
+        "quick_size": 14,
+        "padding": 0,
+        "description": "Is a reworking of the classic gothic typeface style historically represented by designs such as 'Alternate Gothic'"
+    }
+}

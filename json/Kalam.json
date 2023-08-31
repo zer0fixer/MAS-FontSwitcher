@@ -1,0 +1,13 @@
+{
+    "kalam_": {
+        "name": "Kalam",
+        "font_default": "submods/FontSwitcher/font/Kalam-Regular.ttf",
+        "font_label": "submods/FontSwitcher/font/Kalam-Regular.ttf",
+        "font_button": "submods/FontSwitcher/font/Kalam-Regular.ttf",
+        "size_default": 21,
+        "size_button": 21,
+        "quick_size": 14,
+        "padding": 2,
+        "description": "Is a handwriting font family."
+    }
+}

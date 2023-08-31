@@ -1,0 +1,13 @@
+{
+    "comf_font": {
+        "name": "Comfortaa",
+        "font_default": "submods/FontSwitcher/font/Comfortaa.ttf",
+        "font_label": "submods/FontSwitcher/font/Comfortaa.ttf",
+        "font_button": "submods/FontSwitcher/font/Comfortaa.ttf",
+        "size_default": 20,
+        "size_button": 20,
+        "quick_size": 14,
+        "padding": 5,
+        "description": "Is a rounded geometric sans-serif type design intended for large sizes."
+    }
+}
