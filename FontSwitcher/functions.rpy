@@ -2,6 +2,7 @@ init -1 python:
     # Apply the selected font style and trigger a game restart.
     def FS_apply_style():
         FS_get_data = FS_font_switcher[FS_temp_font_]
+        persistent._font_switcher_change = font_switcher_temp_change
         persistent._font_settings_ = {
             "id": FS_temp_font_,
             "name": FS_get_data["name"],

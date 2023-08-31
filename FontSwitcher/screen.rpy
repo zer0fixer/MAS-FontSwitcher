@@ -44,7 +44,7 @@ screen _font_switcher_submod():
             textbutton _("Apply"):
                 style "navigation_button"
                 action Show(screen="dialog", message="To apply the changes, the game will be closed.\nFont to apply : {0}\nLevel of change : {1}".format(
-                    FS_font_switcher[FS_temp_font_]["name"], persistent._font_switcher_change.capitalize()),
+                    FS_font_switcher[FS_temp_font_]["name"], font_switcher_temp_change.capitalize()),
                     ok_action=Function(FS_apply_style))
                 
             textbutton _("Disable"):
