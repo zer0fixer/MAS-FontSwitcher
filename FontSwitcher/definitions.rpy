@@ -2,7 +2,7 @@
 # Variables
 #===========================================================================================
 ## Stores applied font data
-define 3 FS_get_key = JS_font_switcher[persistent._font_settings_["id"]]
+define 3 FS_get_key = FS_font_switcher[persistent._font_settings_["id"]]
 
 # Default font settings
 default persistent._font_settings_ = {
@@ -25,7 +25,7 @@ define 10 font_switcher_custom = FontGroup().add(
 )
 
 # Load font switcher data
-define JS_font_switcher = FS_load_fonts()
+define FS_font_switcher = FS_load_fonts()
 
 # Default font switcher change setting
 default persistent._font_switcher_change = "medium"
@@ -43,10 +43,5 @@ define 5 font_switcher_button_font = FS_get_key["font_button"]
 define 5 font_switcher_padding = FS_get_key["padding"]
 
 define 5 font_switcher_default_text_size = FS_get_key["size_default"]
-# define 5 font_switcher_label_text_size = FS_get_key["size_label"]
 define 5 font_switcher_button_text_size = FS_get_key["size_button"]
 define 5 font_switcher_quick_size = FS_get_key["quick_size"]
-
-
-# define font_switcher_label_text_size = 35
-define font_switcher_menu_font_size = 16

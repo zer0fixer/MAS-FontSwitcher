@@ -27,7 +27,7 @@ init 1000:
         style quick_button_text:
             font    font_switcher_custom
             size    font_switcher_quick_size
-
+            
         style quick_button_text_dark:
             font    font_switcher_custom
             size    font_switcher_quick_size

@@ -19,19 +19,19 @@ screen _font_switcher_submod():
         null height 10
 
         # Sort and display font options in groups of four.
-        $ font_keys = sorted(JS_font_switcher.keys(), key=lambda k: JS_font_switcher[k]["name"])
+        $ font_keys = sorted(FS_font_switcher.keys(), key=lambda k: FS_font_switcher[k]["name"])
 
         for i in range(0, len(font_keys), 4):
             hbox:
                 spacing 10
                 for j in range(i, min(i+4, len(font_keys))):
                     $ key = font_keys[j]
-                    $ font_name = JS_font_switcher[key]["name"]
+                    $ font_name = FS_font_switcher[key]["name"]
 
                     # Button to select a font.
                     textbutton _(font_name):
                         action SetField(store, "FS_temp_font_", key)
-                        hovered tooltip.Action(JS_font_switcher[key]["description"])
+                        hovered tooltip.Action(FS_font_switcher[key]["description"])
                         selected FS_temp_font_ == key
                         
             null height 10
@@ -45,7 +45,7 @@ screen _font_switcher_submod():
             textbutton _("Apply"):
                 style "navigation_button"
                 action Show(screen="dialog", message="To apply the changes, the game will be closed.\nFont to apply : {0}\nLevel of change : {1}".format(
-                    JS_font_switcher[FS_temp_font_]["name"], persistent._font_switcher_change.capitalize()),
+                    FS_font_switcher[FS_temp_font_]["name"], persistent._font_switcher_change.capitalize()),
                     ok_action=Function(FS_apply_style))
                 
             textbutton _("Disable"):
@@ -86,25 +86,25 @@ label _fs_preview:
     python:
         disable_esc()
         mas_MUMURaiseShield()
-        font_settings = JS_font_switcher[FS_temp_font_]
-
         temp_padding = font_settings["padding"]
         size_default = font_settings["size_default"]
         size_button = font_settings["size_button"]
+        quick_size = font_settings["quick_size"]
         path_default = font_settings["font_default"]
         path_label = font_settings["font_label"]
         path_button = font_settings["font_button"]
-        preview_text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n1 2 3 4 5 6 7 8 9 0 ! ? . , : ; _\nJust click on the textbox or anywhere on the screen to exit the preview."
-
+        preview_text = "Just click on the textbox or anywhere on the screen to exit the preview.\n1 2 3 4 5 6 7 8 9 0 ! ? _ . , : ;"
         fake_name = "{size=[size_default]}{font=[path_default]}Name{/font}{/size}"
 
     # Show font preview overlay.
+    show screen fake_quick_menu
     show screen fake_overlay
     fake_name "{size=[size_default]}{font=[path_default]}[preview_text]{/font}{/size}"
     show monika
     python:
         enable_esc()
         mas_MUMUDropShield()
+    hide screen fake_quick_menu
     hide screen fake_overlay
     return
 
@@ -116,7 +116,7 @@ screen fake_overlay():
         style_prefix "check"
         xpos 0.050
         ypos 0.0
-        label "{size=[size_default]}{font=[path_label]}Note:{/font}{/size}"
+        label "{font=[path_label]}Note:{/font}"
         text "{size=[size_default]}{font=[path_default]}Just Monika\nUse fonts that are legible.{/font}{/size}" outlines [(2, "#808080", 0, 0)]
 
     vbox:
@@ -145,4 +145,27 @@ screen fake_overlay():
         for _menu in items:
             textbutton "{size=[size_button]}{font=[path_button]}[_menu]{/font}{/size}":
                 padding(temp_padding, temp_padding)
-                action NullAction()
+                action Return()
+
+screen fake_quick_menu():
+    zorder 100
+
+    hbox:
+        style_prefix "quick"
+
+        xalign 0.5
+        yalign 0.995
+
+        $ items = [
+            "History",
+            "Skip",
+            "Auto",
+            "Save",
+            "Load",
+            "Settings"
+        ]
+
+        for _quick in items:
+            textbutton "{size=[quick_size]}{font=[path_button]}[_quick]{/font}{/size}":
+                action Return()
+

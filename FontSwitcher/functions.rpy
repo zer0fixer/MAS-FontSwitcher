@@ -1,12 +1,12 @@
 init -1 python:
     # Apply the selected font style and trigger a game restart.
     def FS_apply_style():
-        FS_get_data = JS_font_switcher[FS_temp_font_]
         persistent._font_settings_ = {
             "id": FS_temp_font_,
             "name": FS_get_data["name"],
             "applied": True
         }
+
         FS_monika_restart()
 
     # Reset font style settings to default and trigger a game restart.
@@ -52,7 +52,3 @@ init -1 python:
             fonts_data.update(json_data)
 
         return fonts_data
-
-    # Check if a font file exists at the given path.
-    def is_font_available(font_path):
-        return os.path.isfile(font_path)

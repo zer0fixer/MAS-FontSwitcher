@@ -80,11 +80,9 @@ init 1000:
         ## Version text
         style main_menu_version:
             font    font_switcher_custom
-            size    font_switcher_menu_font_size
 
         style main_menu_version_dark:
             font    font_switcher_custom
-            size    font_switcher_menu_font_size
 
         ## Menu text
         style navigation_button_text:
