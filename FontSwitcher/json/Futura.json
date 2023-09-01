@@ -1,0 +1,12 @@
+{
+    "_futura_": {
+        "name": "Futura",
+        "font_default": "submods/FontSwitcher/font/Futura.ttf",
+        "font_label": "submods/FontSwitcher/font/Futura.ttf",
+        "font_button": "submods/FontSwitcher/font/Futura.ttf",
+        "size_default": 22,
+        "size_button": 22,
+        "quick_size": 17,
+        "padding": 3
+    }
+}

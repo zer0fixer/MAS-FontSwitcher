@@ -117,7 +117,7 @@ screen fake_overlay():
         xpos 0.050
         ypos 0.0
         label "{font=[path_label]}Note:{/font}"
-        text "{size=[size_default]}{font=[path_default]}Just Monika\nUse fonts that are legible.{/font}{/size}" outlines [(2, "#808080", 0, 0)]
+        text "{size=[size_default]}{font=[path_default]}Just Monika.\n\nUse fonts that are legible.\n\nYou can add your own fonts.{/font}{/size}" outlines [(2, "#808080", 0, 0)]
 
     vbox:
         style_prefix "hkb"
