@@ -9,12 +9,20 @@
 </p>
 
 It is a submod that adds a simple way to add new fonts to Monika After Story so you can give it your personal touch.
-This submod is compatible with DDLC Comfy UI.
 
+## Features
+- Replaces the font type of the `Monika After Story mod`.
+- It has levels of change in case the user does not want to saturate the interface.
+- This submod is compatible with `Comfy UI`.
+- It has a preview so that the user can see the font type before applying the changes.
+  
 ## Preview submod
 | Before | After | Comfy UI |
 | ------- | ------- | ------- |
 | ![Holi](https://github.com/zer0fixer/MAS-FontSwitcher/assets/94260040/4602cc56-a6d4-4fec-96d3-f7be56c05508) | ![lmao](https://github.com/zer0fixer/MAS-FontSwitcher/assets/94260040/f21de1f0-ebea-483f-9340-0fadb11b2e50) | ![Holi](https://github.com/zer0fixer/MAS-FontSwitcher/assets/94260040/a2940cb6-49f2-461d-a722-53d3ab9c6a1c) |
+
+## Installation
+- Download the latest version of the submod, unzip the zip file and paste it into the `submods` folder.
 
 ## Fonts
 To add and share more fonts, you can use JSON files.
