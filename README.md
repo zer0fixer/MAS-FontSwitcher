@@ -1,4 +1,3 @@
-# ⚠ Submod under construction, should not be used.
 <p align="center">
   <img src="https://github.com/zer0fixer/MAS-FontSwitcher/assets/94260040/ecafaae0-acfc-4105-a5a0-2d5c5864e2c5">
 </p>
@@ -9,12 +8,13 @@
 </a>
 </p>
 
-It is a submod that adds a simple way to add new fonts to Monika After Story so you can give it your personal touch
+It is a submod that adds a simple way to add new fonts to Monika After Story so you can give it your personal touch.
+This submod is compatible with DDLC Comfy UI.
 
 ## Preview submod
-| Before | After |
-| ------- | ------- |
-| ![Holi](https://github.com/zer0fixer/MAS-FontSwitcher/assets/94260040/4602cc56-a6d4-4fec-96d3-f7be56c05508) | ![lmao](https://github.com/zer0fixer/MAS-FontSwitcher/assets/94260040/f1bafe56-62ff-4470-a5ca-ca52b6b1eb52) |
+| Before | After | Comfy UI |
+| ------- | ------- | ------- |
+| ![Holi](https://github.com/zer0fixer/MAS-FontSwitcher/assets/94260040/4602cc56-a6d4-4fec-96d3-f7be56c05508) | ![lmao](https://github.com/zer0fixer/MAS-FontSwitcher/assets/94260040/f21de1f0-ebea-483f-9340-0fadb11b2e50) | ![Holi](https://github.com/zer0fixer/MAS-FontSwitcher/assets/94260040/a2940cb6-49f2-461d-a722-53d3ab9c6a1c) |
 
 ## Fonts
 To add and share more fonts, you can use JSON files.
@@ -29,9 +29,9 @@ Click ![Here!](https://github.com/zer0fixer/resource-repository/blob/main/Templa
         "font_default": "mod_assets/font/m1_fixed.ttf",  # ← Path of the main font (Game Text, Dialogue).
         "font_label": "mod_assets/font/m1_fixed.ttf",  # ← Path of the label font (General Titles).
         "font_button": "mod_assets/font/m1_fixed.ttf",  # ← Path of the button font (Options).
-        "size_default": 27,  # ← Applies the size of the main font.
-        "size_button": 27,  # ← Applies the font size of the buttons.
-        "quick_size": 14,  # ← The size of the quick menu (History, Skip, Auto, Save, Load, Settings).
+        "size_default": 28,  # ← Applies the size of the main font.
+        "size_button": 28,  # ← Applies the font size of the buttons.
+        "quick_size": 20,  # ← The size of the quick menu (History, Skip, Auto, Save, Load, Settings).
         "padding": 3 # ← This is used to adjust the position and size of the button content. Therefore you will use it in some fonts where it is necessary to modify the padding.
     }
 }
