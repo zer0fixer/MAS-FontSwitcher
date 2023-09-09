@@ -6,7 +6,8 @@
         "font_button": "mod_assets/font/m1_fixed.ttf",
         "size_default": 28,
         "size_button": 28,
-        "quick_size": 20,
+        "size_quick": 20,
+        "size_label": 34,
         "padding": 3
     }
   }

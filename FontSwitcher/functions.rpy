@@ -40,7 +40,8 @@ init -1 python:
                     "font_button": "mod_assets/font/m1_fixed.ttf",
                     "size_default": 27,
                     "size_button": 27,
-                    "quick_size": 14,
+                    "size_quick": 14,
+                    "size_label": 34,
                     "padding": 3
                 }
             }
@@ -53,3 +54,9 @@ init -1 python:
             fonts_data.update(json_data)
 
         return fonts_data
+
+    def FS_reset_bars():
+        persistent.fs_additional_size["default"] = 0
+        persistent.fs_additional_size["options"] = 0
+        persistent.fs_additional_size["quick_menu"] = 0
+        persistent.fs_additional_size["label"] = 0

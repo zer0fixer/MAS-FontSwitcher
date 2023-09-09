@@ -58,6 +58,11 @@ screen _font_switcher_submod():
                 action Function(renpy.call_in_new_context, '_fs_preview')
                 hovered tooltip.Action("Here is a preview of the font you want to apply.")
 
+            textbutton _("Size"):
+                style "navigation_button"
+                action Show("font_size_settings")
+                hovered tooltip.Action("Adds additional size to fonts in general.")
+
             null height 20
 
             hbox:
@@ -87,9 +92,11 @@ label _fs_preview:
         mas_MUMURaiseShield()
         font_settings = FS_font_switcher[FS_temp_font_]
         temp_padding = font_settings["padding"]
-        size_default = font_settings["size_default"]
-        size_button = font_settings["size_button"]
-        quick_size = font_settings["quick_size"]
+        size_default = font_settings["size_default"] + persistent.fs_additional_size["default"]
+        size_button = font_settings["size_button"] + persistent.fs_additional_size["options"]
+        size_quick = font_settings["size_quick"] + persistent.fs_additional_size["quick_menu"]
+        size_label = font_settings["size_label"] + persistent.fs_additional_size["label"]
+
         path_default = font_settings["font_default"]
         path_label = font_settings["font_label"]
         path_button = font_settings["font_button"]
@@ -116,7 +123,7 @@ screen fake_overlay():
         style_prefix "check"
         xpos 0.050
         ypos 0.0
-        label "{font=[path_label]}Note:{/font}"
+        label "{size=[size_label]}{font=[path_label]}Note:{/font}{/size}"
         text "{size=[size_default]}{font=[path_default]}Just Monika.\n\nUse fonts that are legible.\n\nYou can add your own fonts.{/font}{/size}" outlines [(2, "#808080", 0, 0)]
 
     vbox:
@@ -166,6 +173,77 @@ screen fake_quick_menu():
         ]
 
         for _quick in items:
-            textbutton "{size=[quick_size]}{font=[path_button]}[_quick]{/font}{/size}":
+            textbutton "{size=[size_quick]}{font=[path_button]}[_quick]{/font}{/size}":
                 action Return()
 
+screen font_size_settings():
+    modal True
+
+    zorder 200
+
+    style_prefix "confirm"
+    add mas_getTimeFile("gui/overlay/confirm.png")
+
+    frame:
+        vbox:
+            ymaximum 600
+            xmaximum 800
+            xfill True
+            yfill False
+            spacing 5
+
+            viewport:
+                id "viewport"
+                scrollbars "vertical"
+                ymaximum 500
+                xmaximum 780
+                xfill True
+                yfill False
+                mousewheel True
+
+                vbox:
+                    style_prefix "check"
+                    xmaximum 780
+                    xfill True
+                    yfill False
+                    box_wrap False
+                    
+                    python:
+                        font_settings = FS_font_switcher[FS_temp_font_]
+                        size_default = font_settings["size_default"]
+                        size_button = font_settings["size_button"]
+                        size_quick = font_settings["size_quick"]
+                        size_label = font_settings["size_label"]
+                        keys_to_adjust = ["default", "options", "quick_menu", "label"]
+                        name_to_adjust = ["Default", "Button", "Quick Menu", "Title"]
+                        original_sizes = [size_default, size_button, size_quick, size_label]
+
+                    label "Font: {0}".format(font_settings["name"]):
+                        xalign 0.5
+
+                    for key, name, size in zip(keys_to_adjust, name_to_adjust, original_sizes):
+                        text "{0}".format(name) outlines [(2, "#5a5a5a", 0, 0)]
+                        text " Size: {0}".format(persistent.fs_additional_size[key] + size) outlines [(2, "#808080", 0, 0)]
+
+                        null height 20
+
+                        hbox:
+                            xpos 5
+                            spacing 10
+                            xmaximum 780
+                            bar:
+                                style "slider_slider"
+                                value DictValue(
+                                    persistent.fs_additional_size,
+                                    key,
+                                    range = 10
+                                )
+                        null height 20
+
+                    hbox:
+                        textbutton "Reset":
+                            action Function(FS_reset_bars)
+
+            textbutton "Close":
+                xalign 0.5
+                action Hide("font_size_settings")

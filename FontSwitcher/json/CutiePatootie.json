@@ -6,7 +6,8 @@
         "font_button": "submods/FontSwitcher/font/CutiePatootie.ttf",
         "size_default": 25,
         "size_button": 25,
-        "quick_size": 18,
+        "size_quick": 18,
+        "size_label": 30,
         "padding": 3
     }
 }

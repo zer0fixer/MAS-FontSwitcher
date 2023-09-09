@@ -6,7 +6,8 @@
         "font_button": "submods/FontSwitcher/font/Caveat.ttf",
         "size_default": 24,
         "size_button": 24,
-        "quick_size": 14,
+        "size_quick": 14,
+        "size_label": 30,
         "padding": 0
     }
 }

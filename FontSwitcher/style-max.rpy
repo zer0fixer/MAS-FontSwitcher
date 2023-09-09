@@ -66,16 +66,20 @@ init 1000:
         ## Title
         style game_menu_label_text:
             font    font_switcher_label_font
+            size    font_switcher_label_text_size + 5
 
         style game_menu_label_text_dark:
             font    font_switcher_label_font
+            size    font_switcher_label_text_size + 5
 
         ## Preference label
         style pref_label_text:
             font    font_switcher_label_font
+            size    font_switcher_label_text_size
 
         style pref_label_text_dark:
             font    font_switcher_label_font
+            size    font_switcher_label_text_size
 
         ## Version text
         style main_menu_version:
@@ -87,9 +91,11 @@ init 1000:
         ## Menu text
         style navigation_button_text:
             font    font_switcher_label_font
+            size    font_switcher_label_text_size
 
         style navigation_button_text_dark:
             font    font_switcher_label_font
+            size    font_switcher_label_text_size
 
         ## File text
         style page_label_text:

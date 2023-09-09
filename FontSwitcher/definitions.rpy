@@ -11,6 +11,13 @@ default persistent._font_settings_ = {
     "applied": False
 }
 
+default persistent.fs_additional_size = {
+    "default": 0,
+    "options": 0,
+    "quick_menu": 0,
+    "label": 0
+}
+
 # Define font groups for different character sets
 define 10 font_switcher_custom = FontGroup().add(
     font_switcher_default_font, 0x0020, 0x00ff  # Custom characters
@@ -42,6 +49,7 @@ define 5 font_switcher_label_font = FS_get_key["font_label"]
 define 5 font_switcher_button_font = FS_get_key["font_button"]
 define 5 font_switcher_padding = FS_get_key["padding"]
 
-define 5 font_switcher_default_text_size = FS_get_key["size_default"]
-define 5 font_switcher_button_text_size = FS_get_key["size_button"]
-define 5 font_switcher_quick_size = FS_get_key["quick_size"]
+define 5 font_switcher_default_text_size = FS_get_key["size_default"] + persistent.fs_additional_size["default"]
+define 5 font_switcher_button_text_size = FS_get_key["size_button"] + persistent.fs_additional_size["options"]
+define 5 font_switcher_quick_size = FS_get_key["size_quick"] + persistent.fs_additional_size["quick_menu"]
+define 5 font_switcher_label_text_size = FS_get_key["size_label"] + persistent.fs_additional_size["label"]
