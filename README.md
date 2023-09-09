@@ -4,7 +4,7 @@
 
 <p align="center">
 <a href="https://github.com/zer0fixer/MAS-FontSwitcher/releases/latest">
-  <img alt="Latest release" src="https://img.shields.io/github/v/release/zer0fixer/MAS-Extraplus?style=for-the-badge&logo=appveyor">
+  <img alt="Latest release" src="https://img.shields.io/github/v/release/zer0fixer/MAS-FontSwitcher?style=for-the-badge&logo=appveyor">
 </a>
 </p>
 
@@ -39,7 +39,8 @@ Click ![Here!](https://github.com/zer0fixer/resource-repository/blob/main/Templa
         "font_button": "mod_assets/font/m1_fixed.ttf",  # ← Path of the button font (Options).
         "size_default": 28,  # ← Applies the size of the main font.
         "size_button": 28,  # ← Applies the font size of the buttons.
-        "quick_size": 20,  # ← The size of the quick menu (History, Skip, Auto, Save, Load, Settings).
+        "size_quick": 20,  # ← The size of the quick menu (History, Skip, Auto, Save, Load, Settings).
+        "size_label": 34, # ← It is the size of the titles (Preferences, Navigation, Game Menu).
         "padding": 3 # ← This is used to adjust the position and size of the button content. Therefore you will use it in some fonts where it is necessary to modify the padding.
     }
 }
