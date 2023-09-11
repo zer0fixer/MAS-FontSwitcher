@@ -9,6 +9,8 @@ init -1 python:
             "applied": True
         }
 
+        persistent.fs_additional_size = persistent._temp_additional_
+        
         FS_monika_restart()
 
     # Reset font style settings to default and trigger a game restart.
@@ -18,6 +20,14 @@ init -1 python:
             "name": "Inactive",
             "applied": False
         }
+
+        persistent.fs_additional_size = {
+            "default": 0,
+            "options": 0,
+            "quick_menu": 0,
+            "label": 0
+        }
+
         FS_monika_restart()
 
     # Restart the game by setting a flag and quitting Ren'Py.
@@ -56,7 +66,7 @@ init -1 python:
         return fonts_data
 
     def FS_reset_bars():
-        persistent.fs_additional_size["default"] = 0
-        persistent.fs_additional_size["options"] = 0
-        persistent.fs_additional_size["quick_menu"] = 0
-        persistent.fs_additional_size["label"] = 0
+        persistent._temp_additional_["default"] = 0
+        persistent._temp_additional_["options"] = 0
+        persistent._temp_additional_["quick_menu"] = 0
+        persistent._temp_additional_["label"] = 0

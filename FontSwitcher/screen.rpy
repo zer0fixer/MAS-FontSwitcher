@@ -92,10 +92,10 @@ label _fs_preview:
         mas_MUMURaiseShield()
         font_settings = FS_font_switcher[FS_temp_font_]
         temp_padding = font_settings["padding"]
-        size_default = font_settings["size_default"] + persistent.fs_additional_size["default"]
-        size_button = font_settings["size_button"] + persistent.fs_additional_size["options"]
-        size_quick = font_settings["size_quick"] + persistent.fs_additional_size["quick_menu"]
-        size_label = font_settings["size_label"] + persistent.fs_additional_size["label"]
+        size_default = font_settings["size_default"] + persistent._temp_additional_["default"]
+        size_button = font_settings["size_button"] + persistent._temp_additional_["options"]
+        size_quick = font_settings["size_quick"] + persistent._temp_additional_["quick_menu"]
+        size_label = font_settings["size_label"] + persistent._temp_additional_["label"]
 
         path_default = font_settings["font_default"]
         path_label = font_settings["font_label"]
@@ -210,20 +210,24 @@ screen font_size_settings():
                     
                     python:
                         font_settings = FS_font_switcher[FS_temp_font_]
-                        size_default = font_settings["size_default"]
-                        size_button = font_settings["size_button"]
-                        size_quick = font_settings["size_quick"]
-                        size_label = font_settings["size_label"]
-                        keys_to_adjust = ["default", "options", "quick_menu", "label"]
-                        name_to_adjust = ["Default", "Button", "Quick Menu", "Title"]
-                        original_sizes = [size_default, size_button, size_quick, size_label]
+                        keys_to_adjust = [
+                            "default", "options", "quick_menu", "label"
+                            ]
+                            
+                        name_to_adjust = [
+                            "Default", "Button", "Quick Menu", "Title"
+                            ]
 
-                    label "Font: {0}".format(font_settings["name"]):
+                        original_sizes = [
+                            font_settings["size_default"], font_settings["size_button"], font_settings["size_quick"], font_settings["size_label"]
+                            ]
+
+                    label "Font : {0}".format(font_settings["name"]):
                         xalign 0.5
 
                     for key, name, size in zip(keys_to_adjust, name_to_adjust, original_sizes):
-                        text "{0}".format(name) outlines [(2, "#5a5a5a", 0, 0)]
-                        text " Size: {0}".format(persistent.fs_additional_size[key] + size) outlines [(2, "#808080", 0, 0)]
+                        text "{0}".format(name) outlines [(2, "#696969", 0, 0)]
+                        text " Size : {0}".format(persistent._temp_additional_[key] + size) outlines [(2, "#919191", 0, 0)]
 
                         null height 20
 
@@ -234,7 +238,7 @@ screen font_size_settings():
                             bar:
                                 style "slider_slider"
                                 value DictValue(
-                                    persistent.fs_additional_size,
+                                    persistent._temp_additional_,
                                     key,
                                     range = 10
                                 )

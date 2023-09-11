@@ -43,6 +43,13 @@ default 5 FS_temp_font_ = persistent._font_settings_["id"]
 # Save the temp font switcher change setting
 default 5 font_switcher_temp_change = persistent._font_switcher_change
 
+default 5 persistent._temp_additional_ = {
+    "default": 0,
+    "options": 0,
+    "quick_menu": 0,
+    "label": 0
+}
+
 # Define various font-related variables
 define 5 font_switcher_default_font = FS_get_key["font_default"]
 define 5 font_switcher_label_font = FS_get_key["font_label"]
