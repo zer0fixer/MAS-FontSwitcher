@@ -58,7 +58,7 @@ screen _font_switcher_submod():
                 action Function(renpy.call_in_new_context, '_fs_preview')
                 hovered tooltip.Action("Here is a preview of the font you want to apply.")
 
-            textbutton _("Size"):
+            textbutton _("Size+"):
                 style "navigation_button"
                 action Show("font_size_settings")
                 hovered tooltip.Action("Adds additional size to fonts in general.")
@@ -210,17 +210,11 @@ screen font_size_settings():
                     
                     python:
                         font_settings = FS_font_switcher[FS_temp_font_]
-                        keys_to_adjust = [
-                            "default", "options", "quick_menu", "label"
-                            ]
+                        keys_to_adjust = ["default", "options", "quick_menu", "label"]
                             
-                        name_to_adjust = [
-                            "Default", "Button", "Quick Menu", "Title"
-                            ]
+                        name_to_adjust = ["Default", "Button", "Quick Menu", "Title"]
 
-                        original_sizes = [
-                            font_settings["size_default"], font_settings["size_button"], font_settings["size_quick"], font_settings["size_label"]
-                            ]
+                        original_sizes = [font_settings["size_default"], font_settings["size_button"], font_settings["size_quick"], font_settings["size_label"]]
 
                     label "Font : {0}".format(font_settings["name"]):
                         xalign 0.5

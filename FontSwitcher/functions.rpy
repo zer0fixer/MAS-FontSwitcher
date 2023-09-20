@@ -8,9 +8,15 @@ init -1 python:
             "name": FS_get_data["name"],
             "applied": True
         }
-
-        persistent.fs_additional_size = persistent._temp_additional_
         
+        sizes = persistent._temp_additional_
+        persistent.fs_additional_size = {
+            "default": sizes["default"],
+            "options": sizes["options"],
+            "quick_menu": sizes["quick_menu"],
+            "label": sizes["label"]
+        }
+
         FS_monika_restart()
 
     # Reset font style settings to default and trigger a game restart.
