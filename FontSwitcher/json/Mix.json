@@ -1,0 +1,13 @@
+{
+    "_mix_": {
+        "name": "Mix",
+        "font_default": "submods/FontSwitcher/font/ShantellSans.ttf",
+        "font_label": "submods/FontSwitcher/font/Amestonsans.ttf",
+        "font_button": "submods/FontSwitcher/font/PatrickHand-Regular.ttf",
+        "size_default": 19,
+        "size_button": 23,
+        "size_quick": 16,
+        "size_label": 30,
+        "padding": 0
+    }
+}

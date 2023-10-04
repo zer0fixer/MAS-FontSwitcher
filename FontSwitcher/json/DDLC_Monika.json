@@ -4,8 +4,8 @@
         "font_default": "mod_assets/font/m1_fixed.ttf",
         "font_label": "mod_assets/font/m1_fixed.ttf",
         "font_button": "mod_assets/font/m1_fixed.ttf",
-        "size_default": 28,
-        "size_button": 28,
+        "size_default": 29,
+        "size_button": 29,
         "size_quick": 20,
         "size_label": 34,
         "padding": 3

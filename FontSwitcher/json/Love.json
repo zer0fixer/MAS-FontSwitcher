@@ -1,0 +1,13 @@
+{
+    "i_love_u": {
+        "name": "Love",
+        "font_default": "submods/FontSwitcher/font/Love.ttf",
+        "font_label": "submods/FontSwitcher/font/Love.ttf",
+        "font_button": "submods/FontSwitcher/font/Love.ttf",
+        "size_default": 19,
+        "size_button": 19,
+        "size_quick": 13,
+        "size_label": 27,
+        "padding": 6
+    }
+}

@@ -4,8 +4,8 @@
         "font_default": "submods/FontSwitcher/font/Minecraft-Regular.otf",
         "font_label": "submods/FontSwitcher/font/Minecraft-Regular.otf",
         "font_button": "submods/FontSwitcher/font/Minecraft-Regular.otf",
-        "size_default": 20,
-        "size_button": 20,
+        "size_default": 21,
+        "size_button": 21,
         "size_quick": 14,
         "size_label": 25,
         "padding": 4

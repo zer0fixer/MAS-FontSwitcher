@@ -4,8 +4,8 @@
         "font_default": "submods/FontSwitcher/font/Comfortaa.ttf",
         "font_label": "submods/FontSwitcher/font/Comfortaa.ttf",
         "font_button": "submods/FontSwitcher/font/Comfortaa.ttf",
-        "size_default": 20,
-        "size_button": 20,
+        "size_default": 21,
+        "size_button": 21,
         "size_quick": 14,
         "size_label": 24,
         "padding": 6

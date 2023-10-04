@@ -4,8 +4,8 @@
         "font_default": "submods/FontSwitcher/font/Kalam-Regular.ttf",
         "font_label": "submods/FontSwitcher/font/Kalam-Regular.ttf",
         "font_button": "submods/FontSwitcher/font/Kalam-Regular.ttf",
-        "size_default": 21,
-        "size_button": 21,
+        "size_default": 22,
+        "size_button": 22,
         "size_quick": 14,
         "size_label": 27,
         "padding": 2

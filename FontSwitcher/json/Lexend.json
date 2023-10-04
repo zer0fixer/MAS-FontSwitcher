@@ -4,8 +4,8 @@
         "font_default": "submods/FontSwitcher/font/Lexend.ttf",
         "font_label": "submods/FontSwitcher/font/Lexend.ttf",
         "font_button": "submods/FontSwitcher/font/Lexend.ttf",
-        "size_default": 20,
-        "size_button": 20,
+        "size_default": 21,
+        "size_button": 21,
         "size_quick": 14,
         "size_label": 25,
         "padding": 4

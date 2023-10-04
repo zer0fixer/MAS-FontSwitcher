@@ -21,7 +21,7 @@ init 1000:
         style normal:
             font    font_switcher_custom
             size    font_switcher_default_text_size
-            yoffset -5
+            # yoffset -5
 
         ## Quick button
         style quick_button_text:

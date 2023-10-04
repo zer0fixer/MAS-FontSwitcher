@@ -212,7 +212,7 @@ screen font_size_settings():
                         font_settings = FS_font_switcher[FS_temp_font_]
                         keys_to_adjust = ["default", "options", "quick_menu", "label"]
                             
-                        name_to_adjust = ["Default", "Button", "Quick Menu", "Title"]
+                        name_to_adjust = ["Default", "Options", "Quick Menu", "Navigation"]
 
                         original_sizes = [font_settings["size_default"], font_settings["size_button"], font_settings["size_quick"], font_settings["size_label"]]
 
