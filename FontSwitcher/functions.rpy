@@ -50,7 +50,7 @@ init -1 python:
         except OSError:
             return {
                 "justmonika": {
-                    "name": "Monika",
+                    "name": "Just Monika",
                     "font_default": "mod_assets/font/m1_fixed.ttf",
                     "font_label": "mod_assets/font/m1_fixed.ttf",
                     "font_button": "mod_assets/font/m1_fixed.ttf",
