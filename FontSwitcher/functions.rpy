@@ -76,3 +76,23 @@ init -1 python:
         persistent._temp_additional_["options"] = 0
         persistent._temp_additional_["quick_menu"] = 0
         persistent._temp_additional_["label"] = 0
+
+init 1 python:
+    # Function to verify and reset the configuration
+    def check_and_reset_font_settings():
+        selected_key = persistent._font_settings_["id"]
+
+        if selected_key not in store.FS_font_switcher:
+            persistent._font_settings_ = {
+                "id": "justmonika",
+                "name": "Inactive",
+                "applied": False
+            }
+            persistent.fs_additional_size = {
+                "default": 0,
+                "options": 0,
+                "quick_menu": 0,
+                "label": 0
+            }
+    
+    check_and_reset_font_settings()
