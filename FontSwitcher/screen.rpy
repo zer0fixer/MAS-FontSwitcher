@@ -58,10 +58,10 @@ screen _font_switcher_submod():
                 action Function(renpy.call_in_new_context, '_fs_preview')
                 hovered tooltip.Action("Here is a preview of the font you want to apply.")
 
-            textbutton _("Size+"):
+            textbutton _("-Size+"):
                 style "navigation_button"
                 action Show("font_size_settings")
-                hovered tooltip.Action("Adds additional size to fonts in general.")
+                hovered tooltip.Action("Reduce or increase the default font size.")
 
             null height 20
 
@@ -176,6 +176,32 @@ screen fake_quick_menu():
             textbutton "{size=[size_quick]}{font=[path_button]}[_quick]{/font}{/size}":
                 action Return()
 
+# Reusable screen for size adjustment controls (+/- buttons)
+screen _fs_size_adjuster(key, name, original_size):
+    hbox:
+        xfill True
+        spacing 15
+        align (0.5, 0.5)
+
+        # Label for the setting
+        text "{0}".format(name):
+            text_align 0.0
+            xsize 200
+
+        # Decrease button
+        textbutton "-":
+            style "navigation_button"
+            action Function(FS_adjust_size, key=key, amount=-1, original_size=original_size)
+
+        # Current size display
+        text "Size: {0}".format(persistent._temp_additional_[key] + original_size):
+            text_align 0.5
+
+        # Increase button
+        textbutton "+":
+            style "navigation_button"
+            action Function(FS_adjust_size, key=key, amount=1, original_size=original_size)
+
 screen font_size_settings():
     modal True
 
@@ -219,23 +245,11 @@ screen font_size_settings():
                     label "Font : {0}".format(font_settings["name"]):
                         xalign 0.5
 
+                    null height 15
+
                     for key, name, size in zip(keys_to_adjust, name_to_adjust, original_sizes):
-                        text "{0}".format(name) outlines [(2, "#696969", 0, 0)]
-                        text " Size : {0}".format(persistent._temp_additional_[key] + size) outlines [(2, "#919191", 0, 0)]
-
-                        null height 20
-
-                        hbox:
-                            xpos 5
-                            spacing 10
-                            xmaximum 780
-                            bar:
-                                style "slider_slider"
-                                value DictValue(
-                                    persistent._temp_additional_,
-                                    key,
-                                    range = 10
-                                )
+                        # Use the reusable screen component
+                        use _fs_size_adjuster(key=key, name=name, original_size=size)
                         null height 20
 
                     hbox:
