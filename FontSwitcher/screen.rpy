@@ -11,29 +11,16 @@ screen _font_switcher_submod():
         box_wrap False
         xfill True
         xmaximum 1000
-
-        # Display selected font's name.
-        label _("Font : {0}").format(persistent._font_settings_["name"]):
-            xpos 0.3
-
         null height 10
 
-        # Sort and display font options in groups of four.
-        $ font_keys = sorted(FS_font_switcher.keys(), key=lambda k: FS_font_switcher[k]["name"])
-
-        for i in range(0, len(font_keys), 4):
-            hbox:
-                spacing 10
-                for j in range(i, min(i+4, len(font_keys))):
-                    $ key = font_keys[j]
-                    $ font_name = FS_font_switcher[key]["name"]
-
-                    # Button to select a font.
-                    textbutton _(font_name):
-                        action SetField(store, "FS_temp_font_", key)
-                        selected FS_temp_font_ == key
-                        
-            null height 10
+        hbox:
+            text _("{b}Select your favorite font : {/b}")
+            # Dropdown-style button to select a font
+            textbutton FS_font_switcher[FS_temp_font_]["name"]:
+                style "navigation_button"
+                action Show("_fs_font_selection")
+                yalign 0.9
+                hovered tooltip.Action("Click to choose a different font.")
 
         null height 10
 
@@ -58,7 +45,7 @@ screen _font_switcher_submod():
                 action Function(renpy.call_in_new_context, '_fs_preview')
                 hovered tooltip.Action("Here is a preview of the font you want to apply.")
 
-            textbutton _("-Size+"):
+            textbutton _("- Size +"):
                 style "navigation_button"
                 action Show("font_size_settings")
                 hovered tooltip.Action("Reduce or increase the default font size.")
@@ -114,6 +101,46 @@ label _fs_preview:
     hide screen fake_quick_menu
     hide screen fake_overlay
     return
+
+# Screen to act as a dropdown menu for font selection
+screen _fs_font_selection():
+    modal True
+    zorder 200
+
+    style_prefix "confirm"
+    add mas_getTimeFile("gui/overlay/confirm.png")
+
+    frame:
+        has vbox
+        
+        label _("Select a Font!"):
+            xalign 0.5
+
+        null height 15
+
+        viewport:
+            scrollbars "vertical"
+            mousewheel True
+            ymaximum 400
+            xmaximum 780
+
+            vbox:
+                style_prefix "check"
+                spacing 10
+                xminimum 700
+                $ font_keys = sorted(FS_font_switcher.keys(), key=lambda k: FS_font_switcher[k]["name"])
+                for key in font_keys:
+                    $ font_name = FS_font_switcher[key]["name"]
+                    textbutton _(font_name):
+                        action [SetField(store, "FS_temp_font_", key), Hide("_fs_font_selection")]
+                        xalign 0.0
+                        xfill True
+                        selected FS_temp_font_ == key
+
+        null height 15
+        textbutton _("Close"):
+            xalign 0.5
+            action Hide("_fs_font_selection")
 
 # Overlay screen for font preview.
 screen fake_overlay():
@@ -186,21 +213,26 @@ screen _fs_size_adjuster(key, name, original_size):
         # Label for the setting
         text "{0}".format(name):
             text_align 0.0
-            xsize 200
+            xsize 250
 
-        # Decrease button
-        textbutton "-":
-            style "navigation_button"
-            action Function(FS_adjust_size, key=key, amount=-1, original_size=original_size)
+        hbox:
+            spacing 30
+            align (1.0, 0.5)
 
-        # Current size display
-        text "Size: {0}".format(persistent._temp_additional_[key] + original_size):
-            text_align 0.5
+            # Decrease button
+            textbutton "-":
+                style "navigation_button"
+                action Function(FS_adjust_size, key=key, amount=-1, original_size=original_size)
 
-        # Increase button
-        textbutton "+":
-            style "navigation_button"
-            action Function(FS_adjust_size, key=key, amount=1, original_size=original_size)
+            # Current size display
+            text "Size: {0}".format(persistent._temp_additional_[key] + original_size):
+                text_align 0.5
+                xsize 150
+
+            # Increase button
+            textbutton "+":
+                style "navigation_button"
+                action Function(FS_adjust_size, key=key, amount=1, original_size=original_size)
 
 screen font_size_settings():
     modal True
@@ -212,50 +244,33 @@ screen font_size_settings():
 
     frame:
         vbox:
+            style_prefix "check"
+            xmaximum 600
             ymaximum 600
-            xmaximum 800
             xfill True
-            yfill False
             spacing 5
-
-            viewport:
-                id "viewport"
-                scrollbars "vertical"
-                ymaximum 500
-                xmaximum 780
-                xfill True
-                yfill False
-                mousewheel True
-
-                vbox:
-                    style_prefix "check"
-                    xmaximum 780
-                    xfill True
-                    yfill False
-                    box_wrap False
+            
+            python:
+                font_settings = FS_font_switcher[FS_temp_font_]
+                keys_to_adjust = ["default", "options", "quick_menu", "label"]
                     
-                    python:
-                        font_settings = FS_font_switcher[FS_temp_font_]
-                        keys_to_adjust = ["default", "options", "quick_menu", "label"]
-                            
-                        name_to_adjust = ["Default", "Options", "Quick Menu", "Navigation"]
+                name_to_adjust = ["Default", "Options", "Quick Menu", "Navigation"]
 
-                        original_sizes = [font_settings["size_default"], font_settings["size_button"], font_settings["size_quick"], font_settings["size_label"]]
+                original_sizes = [font_settings["size_default"], font_settings["size_button"], font_settings["size_quick"], font_settings["size_label"]]
 
-                    label "Font : {0}".format(font_settings["name"]):
-                        xalign 0.5
-
-                    null height 15
-
-                    for key, name, size in zip(keys_to_adjust, name_to_adjust, original_sizes):
-                        # Use the reusable screen component
-                        use _fs_size_adjuster(key=key, name=name, original_size=size)
-                        null height 20
-
-                    hbox:
-                        textbutton "Reset":
-                            action Function(FS_reset_bars)
-
-            textbutton "Close":
+            label "Font : {0}".format(font_settings["name"]):
                 xalign 0.5
-                action Hide("font_size_settings")
+
+            null height 15
+
+            for key, name, size in zip(keys_to_adjust, name_to_adjust, original_sizes):
+                # Use the reusable screen component
+                use _fs_size_adjuster(key=key, name=name, original_size=size)
+                null height 20
+
+            hbox:
+                textbutton "Reset" action Function(FS_reset_bars) # This button resets the size adjustments to 0
+            hbox:
+                xalign 0.5
+                style_prefix "confirm"
+                textbutton "Close" action Hide("font_size_settings")

@@ -41,17 +41,28 @@ init -1 python:
         persistent.closed_self = True
         renpy.quit()
 
+    def _normalize_path(path):
+        """
+        Normalizes a path by replacing backslashes with forward slashes for
+        cross-platform compatibility.
+        """
+        return path.replace("\\", "/")
+
+    def _get_submod_dir(submod_name):
+        """
+        Gets the directory for a given submod, handling case variations
+        for the 'submods' directory.
+        """
+        game_dir = _normalize_path(renpy.config.basedir)
+        submods_dir = os.path.join(game_dir, "game", "submods")
+        if not os.path.isdir(submods_dir):
+            submods_dir = os.path.join(game_dir, "game", "Submods")
+
+        return _normalize_path(os.path.join(submods_dir, submod_name))
+
     # Load fonts data from JSON files in the designated folder.
     def FS_load_fonts():
-        game_dir = os.path.join(renpy.config.basedir, "game")
-        submods_dir_name = "submods"
-        
-        # Check for "Submods" (capitalized) as some users might have it this way.
-        if not os.path.isdir(os.path.join(game_dir, submods_dir_name)):
-            if os.path.isdir(os.path.join(game_dir, "Submods")):
-                submods_dir_name = "Submods"
-
-        json_folder = os.path.join(game_dir, submods_dir_name, "FontSwitcher", "json")
+        json_folder = os.path.join(_get_submod_dir("FontSwitcher"), "json")
 
         try:
             json_files = [os.path.join(json_folder, filename) for filename in os.listdir(json_folder) if filename.endswith('.json')]
@@ -73,8 +84,8 @@ init -1 python:
         fonts_data = {}
 
         for filepath in json_files:
-            with open(filepath) as file:
-                json_data = json.load(file)
+            with open(filepath, 'r') as f:
+                json_data = json.load(f)
             fonts_data.update(json_data)
 
         return fonts_data
@@ -114,3 +125,4 @@ init 1 python:
             }
     
     check_and_reset_font_settings()
+
