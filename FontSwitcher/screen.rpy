@@ -34,19 +34,19 @@ screen _font_switcher_submod():
                     persistent._font_settings_["applied"] and
                     FS_temp_font_ == persistent._font_settings_["id"]
                 )
-                # Check if any size/padding adjustments have been made.
-                has_temp_changes = any(persistent._temp_additional_.values())
 
                 if is_refresh_scenario:
-                    apply_button_text = "Refresh"
-                    apply_message = "To apply the new size and padding values, the game will restart."
-                    # The button is sensitive only if there are changes to apply.
-                    is_button_sensitive = has_temp_changes
+                    apply_button_text = "Update"
+                    apply_message = "To apply the new size and padding values, the game will close."
+                    hovered_message = "Don't like the font size and padding? Update the values you have selected!"
+                    # The button is sensitive only if the temporary adjustments are different from the applied ones.
+                    is_button_sensitive = (persistent._temp_additional_ != persistent.fs_additional_size)
                 else:
                     apply_button_text = "Apply"
                     apply_message = "To apply the changes, the game will be closed.\nFont to apply : {0}\nLevel of change : {1}".format(
                         FS_font_switcher[FS_temp_font_]["name"], font_switcher_temp_change.capitalize()
                     )
+                    hovered_message = "Before applying a font, it is recommended that you preview how it will look and then apply it."
                     # The "Apply" button is always sensitive if it's not a refresh scenario.
                     is_button_sensitive = True
             
@@ -54,12 +54,14 @@ screen _font_switcher_submod():
                 style "navigation_button"
                 action Show("dialog", message=apply_message, ok_action=Function(FS_apply_style))
                 sensitive is_button_sensitive
+                hovered tooltip.Action(hovered_message)
             
             textbutton _("Disable"):
                 style "navigation_button"
                 action Show(screen="dialog", message="Disabling has been successful.\nThe game will now be closed.",
                             ok_action=Function(FS_reset_style))
                 sensitive persistent._font_settings_["applied"]
+                hovered tooltip.Action("Disable your current font.")
 
             textbutton _("Preview"):
                 style "navigation_button"
@@ -78,8 +80,8 @@ screen _font_switcher_submod():
 
                 # Options for font switcher range.
                 $ font_switcher_options = [
-                    ("Low", "Apply a minimum change."),
-                    ("Medium", "Applies balanced changes."),
+                    ("Low", "Apply a minimum change (Textbox)."),
+                    ("Medium", "Applies balanced changes (Textbox + Buttons)."),
                     ("High", " Applies changes to the entire interface (Except for: Check Button).")
                 ]
 
