@@ -2,18 +2,30 @@
   <img src="https://github.com/zer0fixer/MAS-FontSwitcher/assets/94260040/ecafaae0-acfc-4105-a5a0-2d5c5864e2c5">
 </p>
 
-<p align="center">
-<a href="https://github.com/zer0fixer/MAS-FontSwitcher/releases/latest">
-  <img alt="Latest release" src="https://img.shields.io/github/v/release/zer0fixer/MAS-FontSwitcher?style=for-the-badge&logo=appveyor">
-</a>
-</p>
+<div align="center">
+  <p>
+    <a href="https://github.com/zer0fixer/MAS-FontSwitcher/stargazers">
+      <img src="https://img.shields.io/github/stars/zer0fixer/MAS-Extraplus?style=for-the-badge&logo=starship&color=C9CBFF&logoColor=C9CBFF&labelColor=302D41" alt="stars" />
+    </a>&nbsp;&nbsp;
+    <a href="https://github.com/zer0fixer/MAS-FontSwitcher/commits/main/">
+      <img src="https://img.shields.io/github/last-commit/zer0fixer/MAS-Extraplus?style=for-the-badge&logo=github&logoColor=eba0ac&label=Last%20Commit&labelColor=302D41&color=eba0ac" alt="Last Commit" />
+    </a>&nbsp;&nbsp;
+    <a href="https://github.com/zer0fixer/MAS-FontSwitcher/releases/latest">
+      <img alt="Latest release" src="https://img.shields.io/github/v/release/zer0fixer/MAS-Extraplus?style=for-the-badge&logo=appveyor&label=Latest%20Release&labelColor=302D41&color=f9e2af" />
+    </a>
+  </p>
+</div>
 
 It is a submod that adds a simple way to add new fonts to Monika After Story so you can give it your personal touch.
 
 ## Features
-- Replaces the font type of the `Monika After Story mod`.
-- It has levels of change in case the user does not want to saturate the interface.
-- This submod is compatible with `Comfy UI`.
+- Replaces the font in the Monika After Story mod.
+- (New!) An updated, cleaner UI that moves the font list to a separate window.
+- (New!) A new 'Size+' menu to adjust font size (min. 8) and padding directly in-game.
+- (New!) State-aware buttons (Apply, Update, Reset) that dim when no changes are pending.
+- (New!) Now supports cross-platform (Windows, Mac, Linux).
+- It has change levels (Low, Medium, High) in case the user does not want to saturate the interface.
+- This submod is compatible with Comfy UI.
 - It has a preview so that the user can see the font type before applying the changes.
   
 ## Preview submod
