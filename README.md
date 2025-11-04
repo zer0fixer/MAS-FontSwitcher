@@ -5,7 +5,7 @@
 <div align="center">
   <p>
     <a href="https://github.com/zer0fixer/MAS-FontSwitcher/stargazers">
-      <img src="https://img.shields.io/github/stars/zer0fixer/MAS-Extraplus?style=for-the-badge&logo=starship&color=C9CBFF&logoColor=C9CBFF&labelColor=302D41" alt="stars" />
+      <img src="https://img.shields.io/github/stars/zer0fixer/MAS-FontSwitcher?style=for-the-badge&logo=starship&color=C9CBFF&logoColor=C9CBFF&labelColor=302D41" alt="stars" />
     </a>&nbsp;&nbsp;
     <a href="https://github.com/zer0fixer/MAS-FontSwitcher/commits/main/">
       <img src="https://img.shields.io/github/last-commit/zer0fixer/MAS-Extraplus?style=for-the-badge&logo=github&logoColor=eba0ac&label=Last%20Commit&labelColor=302D41&color=eba0ac" alt="Last Commit" />
