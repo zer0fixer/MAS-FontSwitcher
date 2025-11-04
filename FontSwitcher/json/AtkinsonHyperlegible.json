@@ -1,0 +1,13 @@
+{
+    "_hyperlegible_": {
+        "name": "Atkinson Hyperlegible",
+        "font_default": "AtkinsonHyperlegible-Regular.ttf",
+        "font_label": "AtkinsonHyperlegible-Regular.ttf",
+        "font_button": "AtkinsonHyperlegible-Regular.ttf",
+        "size_default": 21,
+        "size_button": 21,
+        "size_quick": 14,
+        "size_label": 24,
+        "padding": 6
+    }
+}

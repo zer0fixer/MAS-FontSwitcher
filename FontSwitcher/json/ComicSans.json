@@ -1,0 +1,13 @@
+{
+    "for_real": {
+        "name": "Comic Sans",
+        "font_default": "ComicSansMS3.ttf",
+        "font_label": "ComicSansMS3.ttf",
+        "font_button": "ComicSansMS3.ttf",
+        "size_default": 21,
+        "size_button": 21,
+        "size_quick": 14,
+        "size_label": 24,
+        "padding": 6
+    }
+}

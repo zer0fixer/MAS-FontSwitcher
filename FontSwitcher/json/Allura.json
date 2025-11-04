@@ -1,0 +1,14 @@
+{
+    "_allura_": {
+        "name": "Allura",
+        "font_default": "Allura-Regular.ttf",
+        "font_label": "Allura-Regular.ttf",
+        "font_button": "Allura-Regular.ttf",
+        "size_default": 26,
+        "size_button": 26,
+        "size_quick": 16,
+        "size_label": 34,
+        "padding": 3
+    }
+}
+  

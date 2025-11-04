@@ -110,7 +110,7 @@ label _fs_preview:
         path_default = font_settings["font_default"]
         path_label = font_settings["font_label"]
         path_button = font_settings["font_button"]
-        preview_text = "Just click on the textbox or anywhere on the screen to exit the preview.\n1 2 3 4 5 6 7 8 9 0 ! ? _ . , : ;"
+        preview_text = "Just click on the textbox or anywhere on the screen to exit the preview.\n1 2 3 4 5 6 7 8 9 0 ! ? ~ _ . , : ;"
         fake_name = "{size=[size_default]}{font=[path_default]}Name{/font}{/size}"
 
     # Show font preview overlay.

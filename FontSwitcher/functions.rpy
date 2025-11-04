@@ -99,7 +99,7 @@ init -1 python:
             for key in ["font_default", "font_label", "font_button"]:
                 if key in font_info:
                     font_path = font_info[key]
-                    if "submods/" not in font_path.lower() and "mod_assets/" not in font_path.lower():
+                    if "submods/" not in font_path.lower() and "mod_assets/" not in font_path.lower() and "gui/" not in font_path.lower():
                         # Build the path using os.path.join for consistency
                         full_path = os.path.join(fontswitcher_rel_path, "font", font_path)
                         # Normalize for Ren'Py which uses forward slashes
