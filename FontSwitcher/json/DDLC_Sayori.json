@@ -1,0 +1,13 @@
+{
+    "cinnamon": {
+        "name": "Sayori's handwriting",
+        "font_default": "Sayo.ttf",
+        "font_label": "Sayo.ttf",
+        "font_button": "Sayo.ttf",
+        "size_default": 35,
+        "size_button": 35,
+        "size_quick": 20,
+        "size_label": 40,
+        "padding": 3
+    }
+}

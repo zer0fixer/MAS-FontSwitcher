@@ -1,9 +1,9 @@
 {
     "come_back_c418": {
         "name": "Minecraft",
-        "font_default": "submods/FontSwitcher/font/Minecraft-Regular.otf",
-        "font_label": "submods/FontSwitcher/font/Minecraft-Regular.otf",
-        "font_button": "submods/FontSwitcher/font/Minecraft-Regular.otf",
+        "font_default": "Minecraft-Regular.otf",
+        "font_label": "Minecraft-Regular.otf",
+        "font_button": "Minecraft-Regular.otf",
         "size_default": 21,
         "size_button": 21,
         "size_quick": 14,

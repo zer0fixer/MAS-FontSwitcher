@@ -27,13 +27,34 @@ screen _font_switcher_submod():
         # Buttons for applying, disabling, previewing, and restarting font changes.
         hbox:
             spacing 10
+            
+            python:
+                # Determine if we are just refreshing sizes or applying a new font
+                is_refresh_scenario = (
+                    persistent._font_settings_["applied"] and
+                    FS_temp_font_ == persistent._font_settings_["id"]
+                )
+                # Check if any size/padding adjustments have been made.
+                has_temp_changes = any(persistent._temp_additional_.values())
 
-            textbutton _("Apply"):
+                if is_refresh_scenario:
+                    apply_button_text = "Refresh"
+                    apply_message = "To apply the new size and padding values, the game will restart."
+                    # The button is sensitive only if there are changes to apply.
+                    is_button_sensitive = has_temp_changes
+                else:
+                    apply_button_text = "Apply"
+                    apply_message = "To apply the changes, the game will be closed.\nFont to apply : {0}\nLevel of change : {1}".format(
+                        FS_font_switcher[FS_temp_font_]["name"], font_switcher_temp_change.capitalize()
+                    )
+                    # The "Apply" button is always sensitive if it's not a refresh scenario.
+                    is_button_sensitive = True
+            
+            textbutton _(apply_button_text):
                 style "navigation_button"
-                action Show(screen="dialog", message="To apply the changes, the game will be closed.\nFont to apply : {0}\nLevel of change : {1}".format(
-                    FS_font_switcher[FS_temp_font_]["name"], font_switcher_temp_change.capitalize()),
-                    ok_action=Function(FS_apply_style))
-                
+                action Show("dialog", message=apply_message, ok_action=Function(FS_apply_style))
+                sensitive is_button_sensitive
+            
             textbutton _("Disable"):
                 style "navigation_button"
                 action Show(screen="dialog", message="Disabling has been successful.\nThe game will now be closed.",
@@ -160,9 +181,7 @@ screen fake_overlay():
         ypos 715
 
         for button_text in ["Talk", "Extra", "Music", "Play"]:
-            textbutton "{size=[size_button]}{font=[path_button]}[button_text]{/font}{/size}":
-                padding(temp_padding, temp_padding)
-                action NullAction()
+            textbutton _("{size=[size_button]}{font=[path_button]}[button_text]{/font}{/size}") action NullAction()
 
     vbox:
         style_prefix "talk_choice"
@@ -177,9 +196,7 @@ screen fake_overlay():
         ]
 
         for _menu in items:
-            textbutton "{size=[size_button]}{font=[path_button]}[_menu]{/font}{/size}":
-                padding(temp_padding, temp_padding)
-                action Return()
+            textbutton _("{size=[size_button]}{font=[path_button]}[_menu]{/font}{/size}") action Return()
 
 screen fake_quick_menu():
     zorder 100
@@ -200,8 +217,7 @@ screen fake_quick_menu():
         ]
 
         for _quick in items:
-            textbutton "{size=[size_quick]}{font=[path_button]}[_quick]{/font}{/size}":
-                action Return()
+            textbutton _("{size=[size_quick]}{font=[path_button]}[_quick]{/font}{/size}") action Return()
 
 # Reusable screen for size adjustment controls (+/- buttons)
 screen _fs_size_adjuster(key, name, original_size):
@@ -220,17 +236,22 @@ screen _fs_size_adjuster(key, name, original_size):
             align (1.0, 0.5)
 
             # Decrease button
-            textbutton "-":
+            textbutton _("-"):
                 style "navigation_button"
                 action Function(FS_adjust_size, key=key, amount=-1, original_size=original_size)
 
             # Current size display
-            text "Size: {0}".format(persistent._temp_additional_[key] + original_size):
-                text_align 0.5
-                xsize 150
+            if key == "padding":
+                text _("Space: {0}".format(persistent._temp_additional_[key] + original_size)):
+                    text_align 0.5
+                    xsize 150
+            else:
+                text _("Size: {0}".format(persistent._temp_additional_[key] + original_size)):
+                    text_align 0.5
+                    xsize 150
 
             # Increase button
-            textbutton "+":
+            textbutton _("+"):
                 style "navigation_button"
                 action Function(FS_adjust_size, key=key, amount=1, original_size=original_size)
 
@@ -252,13 +273,16 @@ screen font_size_settings():
             
             python:
                 font_settings = FS_font_switcher[FS_temp_font_]
-                keys_to_adjust = ["default", "options", "quick_menu", "label"]
+                keys_to_adjust = ["default", "options", "quick_menu", "label", "padding"]
                     
-                name_to_adjust = ["Default", "Options", "Quick Menu", "Navigation"]
+                name_to_adjust = ["Default", "Options", "Quick Menu", "Navigation", "Padding"]
 
-                original_sizes = [font_settings["size_default"], font_settings["size_button"], font_settings["size_quick"], font_settings["size_label"]]
+                original_sizes = [font_settings["size_default"], font_settings["size_button"], font_settings["size_quick"], font_settings["size_label"], font_settings.get("padding", 0)]
 
-            label "Font : {0}".format(font_settings["name"]):
+                # Check if there are any changes to reset
+                has_changes_to_reset = any(persistent._temp_additional_.values())
+
+            label _("Font : {0}".format(font_settings["name"])):
                 xalign 0.5
 
             null height 15
@@ -266,11 +290,14 @@ screen font_size_settings():
             for key, name, size in zip(keys_to_adjust, name_to_adjust, original_sizes):
                 # Use the reusable screen component
                 use _fs_size_adjuster(key=key, name=name, original_size=size)
-                null height 20
+                null height 10
 
             hbox:
-                textbutton "Reset" action Function(FS_reset_bars) # This button resets the size adjustments to 0
+                style_prefix "confirm"
+                # This button resets the size adjustments to 0, and is only sensitive if there are changes.
+                textbutton _("Reset") action Function(FS_reset_bars) sensitive has_changes_to_reset
+
             hbox:
                 xalign 0.5
                 style_prefix "confirm"
-                textbutton "Close" action Hide("font_size_settings")
+                textbutton _("Close") action Hide("font_size_settings")

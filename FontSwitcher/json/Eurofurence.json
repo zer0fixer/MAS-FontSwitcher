@@ -1,9 +1,9 @@
 {
     "_eurofurence": {
         "name": "Eurofurence",
-        "font_default": "submods/FontSwitcher/font/Eurofurence.ttf",
-        "font_label": "submods/FontSwitcher/font/Eurofurence.ttf",
-        "font_button": "submods/FontSwitcher/font/Eurofurence.ttf",
+        "font_default": "Eurofurence.ttf",
+        "font_label": "Eurofurence.ttf",
+        "font_button": "Eurofurence.ttf",
         "size_default": 26,
         "size_button": 26,
         "size_quick": 17,

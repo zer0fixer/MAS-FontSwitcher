@@ -1,0 +1,14 @@
+{
+    "justdancing": {
+        "name": "DancingScript",
+        "font_default": "DancingScript.ttf",
+        "font_label": "DancingScript.ttf",
+        "font_button": "DancingScript.ttf",
+        "size_default": 25,
+        "size_button": 25,
+        "size_quick": 15,
+        "size_label": 34,
+        "padding": 3
+    }
+}
+  

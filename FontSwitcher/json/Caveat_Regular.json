@@ -1,9 +1,9 @@
 {
     "idk": {
         "name": "Caveat",
-        "font_default": "submods/FontSwitcher/font/Caveat.ttf",
-        "font_label": "submods/FontSwitcher/font/Caveat.ttf",
-        "font_button": "submods/FontSwitcher/font/Caveat.ttf",
+        "font_default": "Caveat.ttf",
+        "font_label": "Caveat.ttf",
+        "font_button": "Caveat.ttf",
         "size_default": 25,
         "size_button": 25,
         "size_quick": 14,

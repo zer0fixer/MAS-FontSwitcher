@@ -1,9 +1,9 @@
 {
     "cutiepatootie_": {
         "name": "CutiePatootie",
-        "font_default": "submods/FontSwitcher/font/CutiePatootie.ttf",
-        "font_label": "submods/FontSwitcher/font/CutiePatootie.ttf",
-        "font_button": "submods/FontSwitcher/font/CutiePatootie.ttf",
+        "font_default": "CutiePatootie.ttf",
+        "font_label": "CutiePatootie.ttf",
+        "font_button": "CutiePatootie.ttf",
         "size_default": 26,
         "size_button": 26,
         "size_quick": 18,

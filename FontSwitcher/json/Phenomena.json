@@ -1,9 +1,9 @@
 {
     "$phenomena": {
         "name": "Phenomena",
-        "font_default": "submods/FontSwitcher/font/Phenomena-Regular.ttf",
-        "font_label": "submods/FontSwitcher/font/Phenomena-Regular.ttf",
-        "font_button": "submods/FontSwitcher/font/Phenomena-Regular.ttf",
+        "font_default": "Phenomena-Regular.ttf",
+        "font_label": "Phenomena-Regular.ttf",
+        "font_button": "Phenomena-Regular.ttf",
         "size_default": 24,
         "size_button": 24,
         "size_quick": 14,

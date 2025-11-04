@@ -1,9 +1,9 @@
 {
     "comf_font": {
         "name": "Comfortaa",
-        "font_default": "submods/FontSwitcher/font/Comfortaa.ttf",
-        "font_label": "submods/FontSwitcher/font/Comfortaa.ttf",
-        "font_button": "submods/FontSwitcher/font/Comfortaa.ttf",
+        "font_default": "Comfortaa.ttf",
+        "font_label": "Comfortaa.ttf",
+        "font_button": "Comfortaa.ttf",
         "size_default": 21,
         "size_button": 21,
         "size_quick": 14,

@@ -1,0 +1,13 @@
+{
+    "cuptea": {
+        "name": "Yuri's handwriting (Good luck!)",
+        "font_default": "Yuyu.ttf",
+        "font_label": "Yuyu.ttf",
+        "font_button": "Yuyu.ttf",
+        "size_default": 32,
+        "size_button": 32,
+        "size_quick": 25,
+        "size_label": 40,
+        "padding": -4
+    }
+}

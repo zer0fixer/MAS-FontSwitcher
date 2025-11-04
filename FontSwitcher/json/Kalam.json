@@ -1,9 +1,9 @@
 {
     "kalam_": {
         "name": "Kalam",
-        "font_default": "submods/FontSwitcher/font/Kalam-Regular.ttf",
-        "font_label": "submods/FontSwitcher/font/Kalam-Regular.ttf",
-        "font_button": "submods/FontSwitcher/font/Kalam-Regular.ttf",
+        "font_default": "Kalam-Regular.ttf",
+        "font_label": "Kalam-Regular.ttf",
+        "font_button": "Kalam-Regular.ttf",
         "size_default": 22,
         "size_button": 22,
         "size_quick": 14,

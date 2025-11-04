@@ -1,9 +1,9 @@
 {
     "lex_font": {
         "name": "Lexend",
-        "font_default": "submods/FontSwitcher/font/Lexend.ttf",
-        "font_label": "submods/FontSwitcher/font/Lexend.ttf",
-        "font_button": "submods/FontSwitcher/font/Lexend.ttf",
+        "font_default": "Lexend.ttf",
+        "font_label": "Lexend.ttf",
+        "font_button": "Lexend.ttf",
         "size_default": 21,
         "size_button": 21,
         "size_quick": 14,

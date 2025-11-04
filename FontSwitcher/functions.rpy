@@ -14,7 +14,8 @@ init -1 python:
             "default": sizes["default"],
             "options": sizes["options"],
             "quick_menu": sizes["quick_menu"],
-            "label": sizes["label"]
+            "label": sizes["label"],
+            "padding": sizes["padding"]
         }
 
         FS_monika_restart()
@@ -31,7 +32,8 @@ init -1 python:
             "default": 0,
             "options": 0,
             "quick_menu": 0,
-            "label": 0
+            "label": 0,
+            "padding": 0
         }
 
         FS_monika_restart()
@@ -62,7 +64,8 @@ init -1 python:
 
     # Load fonts data from JSON files in the designated folder.
     def FS_load_fonts():
-        json_folder = os.path.join(_get_submod_dir("FontSwitcher"), "json")
+        fontswitcher_abs_path = _get_submod_dir("FontSwitcher")
+        json_folder = os.path.join(fontswitcher_abs_path, "json")
 
         try:
             json_files = [os.path.join(json_folder, filename) for filename in os.listdir(json_folder) if filename.endswith('.json')]
@@ -88,6 +91,20 @@ init -1 python:
                 json_data = json.load(f)
             fonts_data.update(json_data)
 
+        # Determine the relative path for fonts to handle submods/Submods casing
+        game_dir = _normalize_path(renpy.config.gamedir)
+        fontswitcher_rel_path = _normalize_path(os.path.relpath(fontswitcher_abs_path, game_dir))
+
+        for font_info in fonts_data.values():
+            for key in ["font_default", "font_label", "font_button"]:
+                if key in font_info:
+                    font_path = font_info[key]
+                    if "submods/" not in font_path.lower() and "mod_assets/" not in font_path.lower():
+                        # Build the path using os.path.join for consistency
+                        full_path = os.path.join(fontswitcher_rel_path, "font", font_path)
+                        # Normalize for Ren'Py which uses forward slashes
+                        font_info[key] = _normalize_path(full_path)
+
         return fonts_data
 
     def FS_reset_bars():
@@ -95,16 +112,20 @@ init -1 python:
         persistent._temp_additional_["options"] = 0
         persistent._temp_additional_["quick_menu"] = 0
         persistent._temp_additional_["label"] = 0
+        persistent._temp_additional_["padding"] = 0
 
     def FS_adjust_size(key, amount, original_size):
-        # Define a safe minimum font size to prevent text from becoming unreadable.
-        MIN_FONT_SIZE = 8
-
         current_value = persistent._temp_additional_[key]
         new_value = current_value + amount
-        # Ensure the final font size does not fall below the minimum.
-        if (original_size + new_value) >= MIN_FONT_SIZE:
+
+        # For padding, allow negative values without a minimum limit.
+        if key == "padding":
             persistent._temp_additional_[key] = new_value
+        # For font sizes, ensure they don't fall below a minimum readable size.
+        else:
+            MIN_FONT_SIZE = 8
+            if (original_size + new_value) >= MIN_FONT_SIZE:
+                persistent._temp_additional_[key] = new_value
 
 init 1 python:
     # Function to verify and reset the configuration
@@ -121,8 +142,17 @@ init 1 python:
                 "default": 0,
                 "options": 0,
                 "quick_menu": 0,
-                "label": 0
+                "label": 0,
+                "padding": 0
             }
     
-    check_and_reset_font_settings()
+    # Migration function to ensure 'padding' key exists in persistent data
+    def _fs_migrate_persistent_data():
+        # For users updating, this ensures the 'padding' key is added to existing persistent data
+        if "padding" not in persistent.fs_additional_size:
+            persistent.fs_additional_size["padding"] = 0
+        if "padding" not in persistent._temp_additional_:
+            persistent._temp_additional_["padding"] = 0
 
+    _fs_migrate_persistent_data()
+    check_and_reset_font_settings()

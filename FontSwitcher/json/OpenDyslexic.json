@@ -1,0 +1,13 @@
+{
+    "dyslexic": {
+        "name": "OpenDyslexic",
+        "font_default": "OpenDyslexic-Regular.ttf",
+        "font_label": "OpenDyslexic-Regular.ttf",
+        "font_button": "OpenDyslexic-Regular.ttf",
+        "size_default": 16,
+        "size_button": 16,
+        "size_quick": 10,
+        "size_label": 20,
+        "padding": 3
+    }
+}
