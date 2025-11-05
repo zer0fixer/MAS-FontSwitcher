@@ -11,7 +11,7 @@
       <img src="https://img.shields.io/github/last-commit/zer0fixer/MAS-Extraplus?style=for-the-badge&logo=github&logoColor=eba0ac&label=Last%20Commit&labelColor=302D41&color=eba0ac" alt="Last Commit" />
     </a>&nbsp;&nbsp;
     <a href="https://github.com/zer0fixer/MAS-FontSwitcher/releases/latest">
-      <img alt="Latest release" src="https://img.shields.io/github/v/release/zer0fixer/MAS-Extraplus?style=for-the-badge&logo=appveyor&label=Latest%20Release&labelColor=302D41&color=f9e2af" />
+      <img alt="Latest release" src="https://img.shields.io/github/v/release/zer0fixer/MAS-FontSwitcher?style=for-the-badge&logo=appveyor&label=Latest%20Release&labelColor=302D41&color=f9e2af" />
     </a>
   </p>
 </div>
