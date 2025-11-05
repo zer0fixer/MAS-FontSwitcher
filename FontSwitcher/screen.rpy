@@ -49,7 +49,7 @@ screen _font_switcher_submod():
                     # The "Apply" button is always sensitive if it's not a refresh scenario.
                     is_button_sensitive = True
 
-                disable_message = "Font disabled: {}\nThe game will now be closed.".format(persistent._font_settings_["name"])
+                disable_message = "Font disabled : {}\nThe game will now be closed.".format(persistent._font_settings_["name"])
 
             textbutton _(apply_button_text):
                 style "navigation_button"
@@ -82,7 +82,7 @@ screen _font_switcher_submod():
                 $ font_switcher_options = [
                     ("Low", "Apply a minimum change (Textbox)."),
                     ("Medium", "Applies balanced changes (Textbox + Buttons)."),
-                    ("High", " Applies changes to the entire interface (Except for: Check Button).")
+                    ("High", " Applies changes to the entire interface (Except for : Check Button).")
                 ]
 
                 for option_label, option_tooltip in font_switcher_options:
@@ -244,11 +244,11 @@ screen _fs_size_adjuster(key, name, original_size):
 
             # Current size display
             if key == "padding":
-                text _("Space: {0}".format(persistent._temp_additional_[key] + original_size)):
+                text _("Space : {0}".format(persistent._temp_additional_[key] + original_size)):
                     text_align 0.5
                     xsize 150
             else:
-                text _("Size: {0}".format(persistent._temp_additional_[key] + original_size)):
+                text _("Size : {0}".format(persistent._temp_additional_[key] + original_size)):
                     text_align 0.5
                     xsize 150
 
