@@ -44,12 +44,13 @@ screen _font_switcher_submod():
                 else:
                     apply_button_text = "Apply"
                     apply_message = "To apply the changes, the game will be closed.\nFont to apply : {0}\nLevel of change : {1}".format(
-                        FS_font_switcher[FS_temp_font_]["name"], font_switcher_temp_change.capitalize()
-                    )
+                        FS_font_switcher[FS_temp_font_]["name"], font_switcher_temp_change.capitalize())
                     hovered_message = "Before applying a font, it is recommended that you preview how it will look and then apply it."
                     # The "Apply" button is always sensitive if it's not a refresh scenario.
                     is_button_sensitive = True
-            
+
+                disable_message = "Font disabled: {}\nThe game will now be closed.".format(persistent._font_settings_["name"])
+
             textbutton _(apply_button_text):
                 style "navigation_button"
                 action Show("dialog", message=apply_message, ok_action=Function(FS_apply_style))
@@ -58,8 +59,7 @@ screen _font_switcher_submod():
             
             textbutton _("Disable"):
                 style "navigation_button"
-                action Show(screen="dialog", message="Disabling has been successful.\nThe game will now be closed.",
-                            ok_action=Function(FS_reset_style))
+                action Show("dialog", message=disable_message, ok_action=Function(FS_reset_style))
                 sensitive persistent._font_settings_["applied"]
                 hovered tooltip.Action("Disable your current font.")
 
