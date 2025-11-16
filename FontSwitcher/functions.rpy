@@ -151,7 +151,15 @@ init 1 python:
         # For users updating, this ensures the 'padding' key is added to existing persistent data
         if "padding" not in persistent.fs_additional_size:
             persistent.fs_additional_size["padding"] = 0
-        if "padding" not in persistent._temp_additional_:
+        if not isinstance(persistent._temp_additional_, dict):
+            persistent._temp_additional_ = {
+                "default": 0,
+                "options": 0,
+                "quick_menu": 0,
+                "label": 0,
+                "padding": 0
+            }
+        elif "padding" not in persistent._temp_additional_:
             persistent._temp_additional_["padding"] = 0
 
     _fs_migrate_persistent_data()

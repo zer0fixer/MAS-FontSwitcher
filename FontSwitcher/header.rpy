@@ -4,7 +4,7 @@ init -990 python in mas_submod_utils:
         author="ZeroFixer",
         name="Font Switcher",
         description="Easily change the font with a simple process. Github repository: {a=https://github.com/zer0fixer/MAS-FontSwitcher}{i}{u}here{/u}{/i}{/a}",
-        version="1.1.0",
+        version="1.1.1",
         settings_pane="_font_switcher_submod"
     )
 
