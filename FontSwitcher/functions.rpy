@@ -122,9 +122,13 @@ init -1 python:
         fonts_data = {}
 
         for filepath in json_files:
-            with open(filepath, 'r') as f:
-                json_data = json.load(f)
-            fonts_data.update(json_data)
+            try:
+                with open(filepath, 'r') as f:
+                    json_data = json.load(f)
+                fonts_data.update(json_data)
+            except (IOError, json.JSONDecodeError):
+                # Skip corrupted or unreadable files
+                continue
 
         # Determine the relative path for fonts to handle submods/Submods casing
         game_dir = FS_normalize_path(renpy.config.gamedir)
@@ -173,8 +177,7 @@ init -1 python:
             persistent._temp_additional_[key] = new_value
         # For font sizes, ensure they don't fall below a minimum readable size.
         else:
-            MIN_FONT_SIZE = 8
-            if (original_size + new_value) >= MIN_FONT_SIZE:
+            if (original_size + new_value) >= store.FS_MIN_FONT_SIZE:
                 persistent._temp_additional_[key] = new_value
 
 init 1 python:

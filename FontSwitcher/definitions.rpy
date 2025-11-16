@@ -1,6 +1,17 @@
 #===========================================================================================
 # Variables
 #===========================================================================================
+## Minimum readable font size
+define FS_MIN_FONT_SIZE = 8
+
+## Font file paths for different character sets
+define FS_FONT_PATHS = {
+    "korean": "mod_assets/font/SourceHanSansK-Regular.otf",
+    "chinese": "mod_assets/font/SourceHanSansSC-Regular.otf",
+    "japanese": "mod_assets/font/mplus-2p-regular.ttf",
+    "latin": "gui/font/Aller_Rg.ttf"
+}
+
 ## Stores applied font data
 define 3 FS_get_key = FS_font_switcher[persistent._font_settings_["id"]]
 
@@ -23,13 +34,13 @@ default persistent.fs_additional_size = {
 define 10 font_switcher_custom = FontGroup().add(
     font_switcher_default_font, 0x0020, 0x00ff  # Custom characters
     ).add(
-        "mod_assets/font/SourceHanSansK-Regular.otf", 0xac00, 0xd7a3  # Korean characters
+        FS_FONT_PATHS["korean"], 0xac00, 0xd7a3  # Korean characters
     ).add(
-        "mod_assets/font/SourceHanSansSC-Regular.otf", 0x4e00, 0x9faf  # Simplified Chinese characters
+        FS_FONT_PATHS["chinese"], 0x4e00, 0x9faf  # Simplified Chinese characters
     ).add(
-        "mod_assets/font/mplus-2p-regular.ttf", 0x3000, 0x4dff  # Japanese + other characters
+        FS_FONT_PATHS["japanese"], 0x3000, 0x4dff  # Japanese + other characters
     ).add(
-        "gui/font/Aller_Rg.ttf", 0x0000, 0xffff  # Latin-1 characters
+        FS_FONT_PATHS["latin"], 0x0000, 0xffff  # Latin-1 characters
 )
 
 # Load font switcher data
