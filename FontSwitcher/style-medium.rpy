@@ -18,10 +18,12 @@ init 1000:
         style talk_choice_button_text:
             font    font_switcher_button_font
             size    font_switcher_button_text_size
+            yoffset font_switcher_yoffset_buttons
 
         style talk_choice_button_text_dark:
             font    font_switcher_button_font
             size    font_switcher_button_text_size
+            yoffset font_switcher_yoffset_buttons
 
         #===========================================================================================
         # Menu dialogue
@@ -35,13 +37,25 @@ init 1000:
             top_padding    font_switcher_padding
             bottom_padding font_switcher_padding
 
+        style choice_button_text:
+            font    font_switcher_button_font
+            size    font_switcher_button_text_size
+            yoffset font_switcher_yoffset_buttons
+
+        style choice_button_text_dark:
+            font    font_switcher_button_font
+            size    font_switcher_button_text_size
+            yoffset font_switcher_yoffset_buttons
+
         style mas_dlg_menu_button_text:
             font    font_switcher_button_font
             size    font_switcher_button_text_size
+            yoffset font_switcher_yoffset_buttons
 
         style mas_dlg_menu_button_text_dark:
             font    font_switcher_button_font
             size    font_switcher_button_text_size
+            yoffset font_switcher_yoffset_buttons
 
         #===========================================================================================
         # Scrollable menu
@@ -58,10 +72,12 @@ init 1000:
         style scrollable_menu_button_text:
             font    font_switcher_button_font
             size    font_switcher_button_text_size
+            yoffset font_switcher_yoffset_buttons
 
         style scrollable_menu_button_text_dark:
             font    font_switcher_button_font
             size    font_switcher_button_text_size
+            yoffset font_switcher_yoffset_buttons
 
 
 
@@ -80,10 +96,12 @@ init 1000:
         style twopane_scrollable_menu_button_text:
             font    font_switcher_button_font
             size    font_switcher_button_text_size
+            yoffset font_switcher_yoffset_buttons
 
         style twopane_scrollable_menu_button_text_dark:
             font    font_switcher_button_font
             size    font_switcher_button_text_size
+            yoffset font_switcher_yoffset_buttons
 
         #===========================================================================================
         # Hkb menu
@@ -100,10 +118,12 @@ init 1000:
         style hkb_button_text:
             font    font_switcher_button_font
             size    font_switcher_button_text_size
+            yoffset font_switcher_yoffset_buttons
 
         style hkb_button_text_dark:
             font    font_switcher_button_font
             size    font_switcher_button_text_size
+            yoffset font_switcher_yoffset_buttons
 
         #===========================================================================================
         # Extras menu
@@ -112,10 +132,12 @@ init 1000:
         style mas_adjustable_button_text:
             font    font_switcher_custom
             size    font_switcher_button_text_size
+            yoffset font_switcher_yoffset_buttons
 
         style mas_adjustable_button_text_dark:
             font    font_switcher_custom
             size    font_switcher_button_text_size
+            yoffset font_switcher_yoffset_buttons
 
         #===========================================================================================
         # Input

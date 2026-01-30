@@ -1,10 +1,10 @@
 #====Register the submod
-init -990 python in mas_submod_utils:
-    Submod(
+init -990 python:
+    store.mas_submod_utils.Submod(
         author="ZeroFixer",
         name="Font Switcher",
         description="Easily change the font with a simple process. Github repository: {a=https://github.com/zer0fixer/MAS-FontSwitcher}{i}{u}here{/u}{/i}{/a}",
-        version="1.1.1",
+        version="1.1.2",
         settings_pane="_font_switcher_submod"
     )
 

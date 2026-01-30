@@ -37,8 +37,8 @@ screen _font_switcher_submod():
 
                 if is_refresh_scenario:
                     apply_button_text = "Update"
-                    apply_message = "To apply the new size and padding values, the game will close."
-                    hovered_message = "Don't like the font size and padding? Update the values you have selected!"
+                    apply_message = "To apply the new size, padding and offset values, the game will close."
+                    hovered_message = "Update the size, padding and offset values you have selected!"
                     # The button is sensitive only if the temporary adjustments are different from the applied ones.
                     is_button_sensitive = (persistent._temp_additional_ != persistent.fs_additional_size)
                 else:
@@ -174,7 +174,7 @@ screen fake_overlay():
         xpos 0.050
         ypos 0.0
         label "{size=[size_label]}{font=[path_label]}Note:{/font}{/size}"
-        text "{size=[size_default]}{font=[path_default]}Just Monika.\n\nUse fonts that are legible.\n\nYou can add your own fonts.{/font}{/size}" outlines [(2, "#808080", 0, 0)]
+        text "{size=[size_default]}{font=[path_default]}Use fonts that are legible.\n\nYou can add your own fonts.\n\nPadding and Y Offset changes\nare not visible in preview.{/font}{/size}" outlines [(2, "#808080", 0, 0)]
 
     vbox:
         style_prefix "hkb"
@@ -247,6 +247,10 @@ screen _fs_size_adjuster(key, name, original_size):
                 text _("Space : {0}".format(persistent._temp_additional_[key] + original_size)):
                     text_align 0.5
                     xsize 150
+            elif key.startswith("yoffset"):
+                text _("Offset : {0}".format(persistent._temp_additional_[key] + original_size)):
+                    text_align 0.5
+                    xsize 150
             else:
                 text _("Size : {0}".format(persistent._temp_additional_[key] + original_size)):
                     text_align 0.5
@@ -275,11 +279,11 @@ screen font_size_settings():
             
             python:
                 font_settings = FS_font_switcher[FS_temp_font_]
-                keys_to_adjust = ["default", "options", "quick_menu", "label", "padding"]
+                keys_to_adjust = ["default", "options", "quick_menu", "label", "padding", "yoffset_say", "yoffset_buttons"]
                     
-                name_to_adjust = ["Default", "Options", "Quick Menu", "Navigation", "Padding"]
+                name_to_adjust = ["Default", "Options", "Quick Menu", "Navigation", "Padding", "Y Offset (Say)", "Y Offset (Buttons)"]
 
-                original_sizes = [font_settings["size_default"], font_settings["size_button"], font_settings["size_quick"], font_settings["size_label"], font_settings.get("padding", 0)]
+                original_sizes = [font_settings["size_default"], font_settings["size_button"], font_settings["size_quick"], font_settings["size_label"], font_settings.get("padding", 0), 0, 0]
 
                 # Check if there are any changes to reset
                 has_changes_to_reset = any(persistent._temp_additional_.values())
@@ -301,5 +305,54 @@ screen font_size_settings():
 
             hbox:
                 xalign 0.5
+                spacing 20
                 style_prefix "confirm"
+                textbutton _("Help") action Show("_fs_help_screen")
                 textbutton _("Close") action Hide("font_size_settings")
+
+# Help screen for font size settings
+screen _fs_help_screen():
+    modal True
+    zorder 250
+
+    style_prefix "confirm"
+    add mas_getTimeFile("gui/overlay/confirm.png")
+
+    frame:
+        vbox:
+            style_prefix "check"
+            xmaximum 850
+            ymaximum 650
+            xfill True
+            spacing 8
+
+            label _("Parameter Guide"):
+                xalign 0.5
+
+            null height 10
+
+            text _("{b}Default{/b}: Text size in the dialogue box (say window).")
+            text _("{b}Options{/b}: Text size for menu buttons (Talk menu, scrollable menus, etc).")
+            text _("{b}Quick Menu{/b}: Text size for the bottom bar (History, Skip, Auto, Save, Load, Settings).")
+            text _("{b}Navigation{/b}: Text size for navigation labels and titles.")
+            
+            null height 5
+            
+            text _("{b}Padding{/b}: Vertical spacing inside buttons. Increase if text feels cramped.")
+            
+            null height 5
+            
+            text _("{b}Y Offset (Say){/b}: Moves dialogue text up (-) or down (+). Use if text appears misaligned in the textbox.")
+            text _("{b}Y Offset (Buttons){/b}: Moves button text up (-) or down (+). Use if text appears misaligned inside menu buttons.")
+
+            null height 15
+
+            text _("{i}Tip: Different fonts have different metrics. Adjust Y Offset values if your chosen font looks off-center.{/i}"):
+                size 18
+
+            null height 15
+
+            hbox:
+                xalign 0.5
+                style_prefix "confirm"
+                textbutton _("Got it!") action Hide("_fs_help_screen")

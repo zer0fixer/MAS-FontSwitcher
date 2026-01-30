@@ -27,7 +27,9 @@ default persistent.fs_additional_size = {
     "options": 0,
     "quick_menu": 0,
     "label": 0,
-    "padding": 0
+    "padding": 0,
+    "yoffset_say": 0,
+    "yoffset_buttons": 0
 }
 
 # Define font groups for different character sets
@@ -60,7 +62,9 @@ default 5 persistent._temp_additional_ = {
     "options": 0,
     "quick_menu": 0,
     "label": 0,
-    "padding": 0
+    "padding": 0,
+    "yoffset_say": 0,
+    "yoffset_buttons": 0
 }
 
 # Define various font-related variables
@@ -68,6 +72,8 @@ define 5 font_switcher_default_font = FS_get_key["font_default"]
 define 5 font_switcher_label_font = FS_get_key["font_label"]
 define 5 font_switcher_button_font = FS_get_key["font_button"]
 define 5 font_switcher_padding = FS_get_key.get("padding", 0) + persistent.fs_additional_size["padding"]
+define 5 font_switcher_yoffset_say = persistent.fs_additional_size["yoffset_say"]
+define 5 font_switcher_yoffset_buttons = persistent.fs_additional_size["yoffset_buttons"]
 
 define 5 font_switcher_default_text_size = FS_get_key["size_default"] + persistent.fs_additional_size["default"]
 define 5 font_switcher_button_text_size = FS_get_key["size_button"] + persistent.fs_additional_size["options"]

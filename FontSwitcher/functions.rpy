@@ -20,7 +20,9 @@ init -1 python:
             "options": sizes["options"],
             "quick_menu": sizes["quick_menu"],
             "label": sizes["label"],
-            "padding": sizes["padding"]
+            "padding": sizes["padding"],
+            "yoffset_say": sizes["yoffset_say"],
+            "yoffset_buttons": sizes["yoffset_buttons"]
         }
 
         FS_monika_restart()
@@ -42,7 +44,9 @@ init -1 python:
             "options": 0,
             "quick_menu": 0,
             "label": 0,
-            "padding": 0
+            "padding": 0,
+            "yoffset_say": 0,
+            "yoffset_buttons": 0
         }
 
         FS_monika_restart()
@@ -57,6 +61,7 @@ init -1 python:
         persistent.closed_self = True
         renpy.quit()
 
+    # --- Cross-platform path helper functions ---
     def FS_normalize_path(path):
         """
         Normalizes a path by replacing backslashes with forward slashes for
@@ -70,23 +75,61 @@ init -1 python:
         """
         return path.replace("\\", "/")
 
+    def FS_join_path(*args):
+        """
+        Joins path components and normalizes them.
+        
+        Args:
+            *args: Path components to join
+            
+        Returns:
+            str: Normalized joined path
+        """
+        return FS_normalize_path(os.path.join(*args))
+
+    def FS_find_folder_case_insensitive(base_path, target_name):
+        """
+        Case-insensitively finds a folder within a base path.
+        This is crucial for Linux/macOS compatibility where folder names are case-sensitive.
+        
+        Args:
+            base_path (str): The directory to search in
+            target_name (str): The folder name to find (case-insensitive)
+            
+        Returns:
+            str: The actual folder name found, or the target_name as default
+        """
+        try:
+            for folder in os.listdir(base_path):
+                if folder.lower() == target_name.lower() and os.path.isdir(os.path.join(base_path, folder)):
+                    return folder
+        except Exception:
+            # Failsafe in case of permission errors or other issues
+            pass
+        return target_name  # Default value if not found
+
     def FS_getSubmodDir(submod_name):
         """
         Gets the directory for a given submod, handling case variations
-        for the 'submods' directory.
+        for both the 'submods' directory and the submod folder itself.
+        Uses case-insensitive search for cross-platform compatibility.
         
         Args:
             submod_name (str): Name of the submod
             
         Returns:
-            str: Normalized path to the submod directory
+            str: Normalized absolute path to the submod directory
         """
-        game_dir = FS_normalize_path(renpy.config.basedir)
-        submods_dir = os.path.join(game_dir, "game", "submods")
-        if not os.path.isdir(submods_dir):
-            submods_dir = os.path.join(game_dir, "game", "Submods")
-
-        return FS_normalize_path(os.path.join(submods_dir, submod_name))
+        game_dir = FS_normalize_path(os.path.join(renpy.config.basedir, "game"))
+        
+        # Find 'submods' folder case-insensitively
+        submods_folder = FS_find_folder_case_insensitive(game_dir, "submods")
+        submods_dir = FS_join_path(game_dir, submods_folder)
+        
+        # Find the submod folder case-insensitively within submods
+        actual_submod_folder = FS_find_folder_case_insensitive(submods_dir, submod_name)
+        
+        return FS_join_path(submods_dir, actual_submod_folder)
 
     def FS_load_fonts():
         """
@@ -134,15 +177,20 @@ init -1 python:
         game_dir = FS_normalize_path(renpy.config.gamedir)
         fontswitcher_rel_path = FS_normalize_path(os.path.relpath(fontswitcher_abs_path, game_dir))
 
+        # Known path prefixes that indicate the font path is already complete
+        # Using lowercase for case-insensitive comparison
+        known_prefixes = ("submods/", "mod_assets/", "gui/")
+
         for font_info in fonts_data.values():
             for key in ["font_default", "font_label", "font_button"]:
                 if key in font_info:
                     font_path = font_info[key]
-                    if "submods/" not in font_path.lower() and "mod_assets/" not in font_path.lower() and "gui/" not in font_path.lower():
-                        # Build the path using os.path.join for consistency
-                        full_path = os.path.join(fontswitcher_rel_path, "font", font_path)
-                        # Normalize for Ren'Py which uses forward slashes
-                        font_info[key] = FS_normalize_path(full_path)
+                    font_path_lower = font_path.lower()
+                    
+                    # Only prepend the submod path if the font doesn't already have a known prefix
+                    if not any(prefix in font_path_lower for prefix in known_prefixes):
+                        # Build the path using FS_join_path for consistency
+                        font_info[key] = FS_join_path(fontswitcher_rel_path, "font", font_path)
 
         return fonts_data
 
@@ -155,6 +203,8 @@ init -1 python:
         persistent._temp_additional_["quick_menu"] = 0
         persistent._temp_additional_["label"] = 0
         persistent._temp_additional_["padding"] = 0
+        persistent._temp_additional_["yoffset_say"] = 0
+        persistent._temp_additional_["yoffset_buttons"] = 0
 
     def FS_adjust_size(key, amount, original_size):
         """
@@ -172,8 +222,8 @@ init -1 python:
         current_value = persistent._temp_additional_[key]
         new_value = current_value + amount
 
-        # For padding, allow negative values without a minimum limit.
-        if key == "padding":
+        # For padding and yoffset, allow any value including negative without a minimum limit.
+        if key in ("padding", "yoffset_say", "yoffset_buttons"):
             persistent._temp_additional_[key] = new_value
         # For font sizes, ensure they don't fall below a minimum readable size.
         else:
@@ -201,7 +251,9 @@ init 1 python:
                 "options": 0,
                 "quick_menu": 0,
                 "label": 0,
-                "padding": 0
+                "padding": 0,
+                "yoffset_say": 0,
+                "yoffset_buttons": 0
             }
     
     def _FS_migrate_persistent_data():
@@ -213,16 +265,40 @@ init 1 python:
         """
         if "padding" not in persistent.fs_additional_size:
             persistent.fs_additional_size["padding"] = 0
+        if "yoffset_say" not in persistent.fs_additional_size:
+            persistent.fs_additional_size["yoffset_say"] = 0
+        if "yoffset_buttons" not in persistent.fs_additional_size:
+            persistent.fs_additional_size["yoffset_buttons"] = 0
+        # Migration from old yoffset to new split values
+        if "yoffset" in persistent.fs_additional_size:
+            old_val = persistent.fs_additional_size.pop("yoffset", 0)
+            if persistent.fs_additional_size["yoffset_say"] == 0:
+                persistent.fs_additional_size["yoffset_say"] = old_val
+            if persistent.fs_additional_size["yoffset_buttons"] == 0:
+                persistent.fs_additional_size["yoffset_buttons"] = old_val
         if not isinstance(persistent._temp_additional_, dict):
             persistent._temp_additional_ = {
                 "default": 0,
                 "options": 0,
                 "quick_menu": 0,
                 "label": 0,
-                "padding": 0
+                "padding": 0,
+                "yoffset_say": 0,
+                "yoffset_buttons": 0
             }
         elif "padding" not in persistent._temp_additional_:
             persistent._temp_additional_["padding"] = 0
+        if "yoffset_say" not in persistent._temp_additional_:
+            persistent._temp_additional_["yoffset_say"] = 0
+        if "yoffset_buttons" not in persistent._temp_additional_:
+            persistent._temp_additional_["yoffset_buttons"] = 0
+        # Migration from old yoffset to new split values
+        if "yoffset" in persistent._temp_additional_:
+            old_val = persistent._temp_additional_.pop("yoffset", 0)
+            if persistent._temp_additional_["yoffset_say"] == 0:
+                persistent._temp_additional_["yoffset_say"] = old_val
+            if persistent._temp_additional_["yoffset_buttons"] == 0:
+                persistent._temp_additional_["yoffset_buttons"] = old_val
 
     _FS_migrate_persistent_data()
     check_and_reset_font_settings()
