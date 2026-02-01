@@ -1,0 +1,13 @@
+{
+    "cupcake": {
+        "name": "Natsuki's handwriting",
+        "font_default": "Nat.ttf",
+        "font_label": "Nat.ttf",
+        "font_button": "Nat.ttf",
+        "size_default": 26,
+        "size_button": 26,
+        "size_quick": 18,
+        "size_label": 32,
+        "padding": 3
+    }
+}
