@@ -27,6 +27,7 @@ A submod that adds a simple way to add new fonts to Monika After Story so you ca
 - It has change levels (Low, Medium, High) in case the user does not want to saturate the interface.
 - This submod is compatible with Comfy UI.
 - It has a preview so that the user can see the font type before applying the changes.
+- **(Optional)** Supports combined/multilingual fonts (Chinese, Japanese, Korean, etc.) via the `full_unicode` flag — for fonts that already include non-Latin characters built-in.
   
 ## Preview submod
 | Before | After | Comfy UI |
@@ -34,7 +35,30 @@ A submod that adds a simple way to add new fonts to Monika After Story so you ca
 | ![Holi](https://github.com/zer0fixer/MAS-FontSwitcher/assets/94260040/4602cc56-a6d4-4fec-96d3-f7be56c05508) | ![lmao](https://github.com/zer0fixer/MAS-FontSwitcher/assets/94260040/f21de1f0-ebea-483f-9340-0fadb11b2e50) | ![Holi](https://github.com/zer0fixer/MAS-FontSwitcher/assets/94260040/a2940cb6-49f2-461d-a722-53d3ab9c6a1c) |
 
 ## Installation
-- Download the latest version of the submod, unzip the zip file and paste it into the `submods` folder.
+1. Download the latest release from the [Releases](https://github.com/zer0fixer/MAS-FontSwitcher/releases) page.
+2. Unzip the downloaded zip file.
+3. Move the `FontSwitcher` folder directly into your `game/submods/` folder.
+
+### ✅ Post-Installation Check
+To ensure you've installed it correctly and MAS can detect it, your folder structure should look exactly like this:
+
+```text
+game/
+└── submods/
+    └── FontSwitcher/          <-- The main folder
+        ├── font/              <-- Contains .ttf / .otf files
+        ├── json/              <-- Contains .json configuration files
+        ├── definitions.rpy
+        ├── functions.rpy
+        ├── header.rpy
+        ├── screen.rpy
+        ├── style-max.rpy
+        ├── style-medium.rpy
+        └── style-min.rpy
+```
+
+> [!WARNING]
+> If you see a double folder like `game/submods/FontSwitcher/FontSwitcher/`, you need to take the inside folder and move it out. The game will not detect the submod if it's double-layered!
 
 ## How to add new fonts
 You can easily add your own fonts:
@@ -55,7 +79,8 @@ You can use this example as a template for your new JSON file.**
         "size_button": 26,  # ← Applies the font size of the buttons.
         "size_quick": 18,  # ← The size of the quick menu (History, Skip, Auto, Save, Load, Settings).
         "size_label": 32, # ← It is the size of the titles (Preferences, Navigation, Game Menu).
-        "padding": 3 # ← This is used to adjust the position and size of the button content. Therefore you will use it in some fonts where it is necessary to modify the padding.
+        "padding": 3, # ← This is used to adjust the position and size of the button content. Therefore you will use it in some fonts where it is necessary to modify the padding.
+        "full_unicode": false # ← (Optional) Set to true if your font already includes CJK characters (Chinese, Korean, Japanese). When true, the font is used directly without fallback mapping, so all glyphs render from your font.
     }
 }
 ```
