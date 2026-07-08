@@ -32,9 +32,14 @@ default persistent.fs_additional_size = {
     "yoffset_buttons": 0
 }
 
-# Define font groups for different character sets
-define 10 font_switcher_custom = FontGroup().add(
-    font_switcher_default_font, 0x0020, 0x00ff  # Custom characters
+# Define font for text rendering.
+# If "full_unicode" is enabled in the font JSON, the user's font is used directly
+# (for combined fonts that already include CJK glyphs).
+# Otherwise, a FontGroup is used to map CJK characters to MAS fallback fonts.
+define 10 font_switcher_custom = (
+    font_switcher_default_font if FS_get_key.get("full_unicode", False)
+    else FontGroup().add(
+        font_switcher_default_font, 0x0020, 0x00ff  # Custom characters
     ).add(
         FS_FONT_PATHS["korean"], 0xac00, 0xd7a3  # Korean characters
     ).add(
@@ -43,6 +48,7 @@ define 10 font_switcher_custom = FontGroup().add(
         FS_FONT_PATHS["japanese"], 0x3000, 0x4dff  # Japanese + other characters
     ).add(
         FS_FONT_PATHS["latin"], 0x0000, 0xffff  # Latin-1 characters
+    )
 )
 
 # Load font switcher data
